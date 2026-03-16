@@ -204,10 +204,7 @@ function renderCatalogue(filter = {}) {
     if (searchTerm) {
         filtered = filtered.filter(f =>
             f.titre.toLowerCase().includes(searchTerm) ||
-            f.rncp.toLowerCase().includes(searchTerm) ||
-            f.domaine.toLowerCase().includes(searchTerm) ||
-            f.categorie.toLowerCase().includes(searchTerm) ||
-            (f.objectifs && f.objectifs.toLowerCase().includes(searchTerm))
+            f.rncp.toLowerCase().includes(searchTerm)
         );
     }
     if (domaineFilter) {
@@ -292,18 +289,11 @@ window.filterByDomaine = filterByDomaine;
 
 // === Search ===
 function initSearch() {
-    const input = document.getElementById('search-input');
     const catalogueInput = document.getElementById('catalogue-search-input');
     let debounceTimer;
-    input.addEventListener('input', () => {
-        clearTimeout(debounceTimer);
-        if (catalogueInput) catalogueInput.value = input.value;
-        debounceTimer = setTimeout(() => applyFilters(), 200);
-    });
     if (catalogueInput) {
         catalogueInput.addEventListener('input', () => {
             clearTimeout(debounceTimer);
-            input.value = catalogueInput.value;
             debounceTimer = setTimeout(() => applyFilters(), 200);
         });
     }
@@ -323,10 +313,10 @@ function initFilters() {
 }
 
 function applyFilters() {
-    const search = document.getElementById('search-input').value;
-    const filter = { search, niveau: currentNiveau, domaine: currentDomaineFilter };
+    const catalogueSearch = document.getElementById('catalogue-search-input')?.value || '';
+    const filter = { niveau: currentNiveau, domaine: currentDomaineFilter };
     renderParcours(filter);
-    renderCatalogue(filter);
+    renderCatalogue({ ...filter, search: catalogueSearch });
 }
 
 // === Modal ===

@@ -161,7 +161,7 @@
             const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 
             // Verify
-            const VALID_HASH = '45e3acdf7c3b68fbafc145c98085403eafc71adc2b7709f7c3debba4aca63317';
+            const VALID_HASH = '8e7cdce9c58c044f11b91399a4a8d73d47aa7d7099235d0c529b1a33b80ad183';
             if (hashHex === VALID_HASH) {
                 sessionStorage.setItem('certivia_auth', 'true');
                 window.location.href = 'index.html';

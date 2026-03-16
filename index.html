@@ -26,8 +26,8 @@
             <nav class="nav">
                 <a href="#parcours" class="nav-link active" data-section="parcours">Parcours</a>
                 <a href="#catalogue" class="nav-link" data-section="catalogue">Catalogue</a>
-                <button class="logout-btn" onclick="sessionStorage.removeItem('exavia_auth'); window.location.href='login.html';">Deconnexion</button>
             </nav>
+            <button class="logout-btn" onclick="sessionStorage.removeItem('exavia_auth'); window.location.href='login.html';">Deconnexion</button>
         </div>
     </header>
 
@@ -91,6 +91,10 @@
             <div class="catalogue-header">
                 <h2>Catalogue des formations</h2>
                 <div class="catalogue-count"><span id="catalogue-count-number">0</span> formations</div>
+            </div>
+            <div class="catalogue-search-box">
+                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                <input type="text" id="catalogue-search-input" placeholder="Rechercher dans le catalogue...">
             </div>
             <div id="catalogue-sidebar-layout" class="catalogue-layout">
                 <aside class="catalogue-sidebar" id="catalogue-sidebar"></aside>

@@ -63,6 +63,7 @@ function renderParcours(filter = {}) {
         const niveauColors = { 3: 'n3', 4: 'n4', 5: 'n5', 6: 'n6' };
 
         const stepsHTML = niveaux.map((n, stepIdx) => {
+            const yearNum = stepIdx + 1;
             const chips = byNiveau[n].map((f, chipIdx) => `
                 <div class="formation-chip" data-niveau="${n}" data-rncp="${f.rncp}"
                      onclick="openFormationModal('${f.rncp}', '${escapeAttr(f.titre)}', ${n})"
@@ -74,8 +75,8 @@ function renderParcours(filter = {}) {
 
             return `
                 <div class="parcours-step" data-step="${stepIdx}">
-                    <div class="step-marker ${niveauColors[n]}">N${n}</div>
-                    <div class="step-label">Niveau ${n} — ${niveauLabels[n]}</div>
+                    <div class="step-marker ${niveauColors[n]}">A${yearNum}</div>
+                    <div class="step-label">Année ${yearNum} — ${niveauLabels[n]}</div>
                     <div class="step-formations">${chips}</div>
                     <div class="step-dot-runner" style="background:var(--${niveauColors[n]});"></div>
                 </div>
@@ -292,11 +293,20 @@ window.filterByDomaine = filterByDomaine;
 // === Search ===
 function initSearch() {
     const input = document.getElementById('search-input');
+    const catalogueInput = document.getElementById('catalogue-search-input');
     let debounceTimer;
     input.addEventListener('input', () => {
         clearTimeout(debounceTimer);
+        if (catalogueInput) catalogueInput.value = input.value;
         debounceTimer = setTimeout(() => applyFilters(), 200);
     });
+    if (catalogueInput) {
+        catalogueInput.addEventListener('input', () => {
+            clearTimeout(debounceTimer);
+            input.value = catalogueInput.value;
+            debounceTimer = setTimeout(() => applyFilters(), 200);
+        });
+    }
 }
 
 // === Filters ===

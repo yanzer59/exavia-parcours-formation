@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exavia — Connexion</title>
+    <title>Certivia — Connexion</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -122,8 +123,8 @@
     <div class="login-container">
         <div class="login-card">
             <div class="login-logo">
-                <div class="icon">&#9670;</div>
-                <h1>EXAVIA</h1>
+                <img src="favicon.svg" alt="Certivia" style="width:48px;height:48px;margin-bottom:12px;">
+                <h1>CERTIVIA</h1>
                 <p>Parcours de Formation RNCP</p>
             </div>
             <form id="login-form">
@@ -139,12 +140,12 @@
                 <div class="login-error" id="login-error">Identifiant ou mot de passe incorrect.</div>
             </form>
         </div>
-        <div class="login-footer">Exavia &mdash; Acces restreint</div>
+        <div class="login-footer">Certivia &mdash; Acces restreint</div>
     </div>
 
     <script>
         // Check if already authenticated
-        if (sessionStorage.getItem('exavia_auth') === 'true') {
+        if (sessionStorage.getItem('certivia_auth') === 'true') {
             window.location.href = 'index.html';
         }
 
@@ -162,7 +163,7 @@
             // Verify
             const VALID_HASH = '45e3acdf7c3b68fbafc145c98085403eafc71adc2b7709f7c3debba4aca63317';
             if (hashHex === VALID_HASH) {
-                sessionStorage.setItem('exavia_auth', 'true');
+                sessionStorage.setItem('certivia_auth', 'true');
                 window.location.href = 'index.html';
             } else {
                 document.getElementById('login-error').classList.add('show');

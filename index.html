@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exavia — Parcours de Formation RNCP</title>
+    <title>Certivia — Parcours de Formation RNCP</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -11,7 +12,7 @@
 </head>
 <body>
     <script>
-        if (sessionStorage.getItem('exavia_auth') !== 'true') {
+        if (sessionStorage.getItem('certivia_auth') !== 'true') {
             window.location.href = 'login.html';
         }
     </script>
@@ -19,15 +20,15 @@
     <header class="header">
         <div class="header-inner">
             <div class="logo">
-                <span class="logo-icon">◆</span>
-                <span class="logo-text">EXAVIA</span>
+                <img src="favicon.svg" alt="Certivia" class="logo-icon-img">
+                <span class="logo-text">CERTIVIA</span>
                 <span class="logo-sub">Certifications RNCP</span>
             </div>
             <nav class="nav">
                 <a href="#parcours" class="nav-link active" data-section="parcours">Parcours</a>
                 <a href="#catalogue" class="nav-link" data-section="catalogue">Catalogue</a>
             </nav>
-            <button class="logout-btn" onclick="sessionStorage.removeItem('exavia_auth'); window.location.href='login.html';">Deconnexion</button>
+            <button class="logout-btn" onclick="sessionStorage.removeItem('certivia_auth'); window.location.href='login.html';">Deconnexion</button>
         </div>
     </header>
 
@@ -109,7 +110,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-inner">
-            <p>Exavia &mdash; Catalogue de formations RNCP &mdash; Mars 2026</p>
+            <p>Certivia &mdash; Catalogue de formations RNCP &mdash; Mars 2026</p>
             <p class="footer-note">Toutes les formations sont des Titres Professionnels du Ministère du Travail, enregistrés au RNCP et finançables en contrat d'apprentissage via les OPCO.</p>
         </div>
     </footer>

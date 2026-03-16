@@ -479,4 +479,4 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--gray-400); }
 
-.highlight { background: #fef08a; padding: 0 2px; border-radius: 2px; }
+.highlight { background: #fef08a; border-radius: 2px; }

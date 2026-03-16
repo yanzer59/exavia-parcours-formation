@@ -263,7 +263,7 @@ function renderCatalogue(filter = {}) {
                 <span class="catalogue-card-rncp">${highlightText(f.rncp, searchTerm)}</span>
             </div>
             <div class="catalogue-card-title">${highlightText(f.titre, searchTerm)}</div>
-            <div class="catalogue-card-domain">${highlightText(f.domaine, searchTerm)}</div>
+            <div class="catalogue-card-domain">${f.domaine}</div>
             <div>
                 <span class="catalogue-card-statut ${f.statut.toLowerCase()}">${f.statut}</span>
                 <span class="catalogue-card-duree">${f.duree}</span>

@@ -76,7 +76,7 @@ function renderParcours(filter = {}) {
             return `
                 <div class="parcours-step" data-step="${stepIdx}">
                     <div class="step-marker ${niveauColors[n]}">A${yearNum}</div>
-                    <div class="step-label">Année ${yearNum} — ${niveauLabels[n]}</div>
+                    <div class="step-label">Niveau ${n} — ${niveauLabels[n]}</div>
                     <div class="step-formations">${chips}</div>
                     <div class="step-dot-runner" style="background:var(--${niveauColors[n]});"></div>
                 </div>

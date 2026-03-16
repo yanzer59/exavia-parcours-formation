@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exavia — Parcours de Formation RNCP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <script>
+        if (sessionStorage.getItem('exavia_auth') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-icon">◆</span>
+                <span class="logo-text">EXAVIA</span>
+                <span class="logo-sub">Certifications RNCP</span>
+            </div>
+            <nav class="nav">
+                <a href="#parcours" class="nav-link active" data-section="parcours">Parcours</a>
+                <a href="#catalogue" class="nav-link" data-section="catalogue">Catalogue</a>
+                <button class="logout-btn" onclick="sessionStorage.removeItem('exavia_auth'); window.location.href='login.html';">Deconnexion</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badge">Titres Professionnels du Ministère du Travail</div>
+            <h1>Parcours de Formation</h1>
+            <p class="hero-sub">Certifications RNCP &mdash; finançables en apprentissage via les OPCO</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" id="stat-formations">267</span>
+                    <span class="stat-label">formations</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="stat-domaines">64</span>
+                    <span class="stat-label">domaines</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="stat-filieres">14</span>
+                    <span class="stat-label">filières</span>
+                </div>
+            </div>
+            <div class="niveaux-legend">
+                <div class="niveau-badge n3">Niveau 3 — CAP/BEP</div>
+                <div class="niveau-badge n4">Niveau 4 — BAC</div>
+                <div class="niveau-badge n5">Niveau 5 — BAC+2</div>
+                <div class="niveau-badge n6">Niveau 6 — BAC+3</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search bar -->
+    <section class="search-section">
+        <div class="search-inner">
+            <div class="search-box">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                <input type="text" id="search-input" placeholder="Rechercher une formation, un code RNCP, un domaine...">
+                <kbd class="search-kbd">Ctrl+K</kbd>
+            </div>
+            <div class="filter-row">
+                <button class="filter-btn active" data-niveau="all">Tous niveaux</button>
+                <button class="filter-btn" data-niveau="3">Niveau 3</button>
+                <button class="filter-btn" data-niveau="4">Niveau 4</button>
+                <button class="filter-btn" data-niveau="5">Niveau 5</button>
+                <button class="filter-btn" data-niveau="6">Niveau 6</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content: Parcours view -->
+    <main id="section-parcours" class="main-content">
+        <div class="section-inner">
+            <div id="parcours-container"></div>
+        </div>
+    </main>
+
+    <!-- Main content: Catalogue view -->
+    <main id="section-catalogue" class="main-content hidden">
+        <div class="section-inner">
+            <div class="catalogue-header">
+                <h2>Catalogue des formations</h2>
+                <div class="catalogue-count"><span id="catalogue-count-number">0</span> formations</div>
+            </div>
+            <div id="catalogue-sidebar-layout" class="catalogue-layout">
+                <aside class="catalogue-sidebar" id="catalogue-sidebar"></aside>
+                <div class="catalogue-grid" id="catalogue-grid"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Formation detail modal -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal" id="modal">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-content" id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>Exavia &mdash; Catalogue de formations RNCP &mdash; Mars 2026</p>
+            <p class="footer-note">Toutes les formations sont des Titres Professionnels du Ministère du Travail, enregistrés au RNCP et finançables en contrat d'apprentissage via les OPCO.</p>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

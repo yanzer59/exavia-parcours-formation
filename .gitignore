@@ -1,0 +1,5 @@
+node_modules/
+.claude/
+*.mjs
+catalogue-full.json
+package-lock.json

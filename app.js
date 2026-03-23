@@ -126,6 +126,61 @@ function renderParcours(filter = {}) {
     // Update stat number
     document.getElementById('stat-formations').textContent = CATALOGUE.length;
     document.getElementById('stat-filieres').textContent = FILIERES.length;
+
+    // Render parcours sidebar
+    renderParcoursSidebar(filter);
+}
+
+function renderParcoursSidebar(filter = {}) {
+    const list = document.getElementById('parcours-sidebar-list');
+    if (!list) return;
+    const niveauFilter = filter.niveau || 'all';
+    const searchTerm = (document.getElementById('parcours-search-input')?.value || '').toLowerCase();
+
+    list.innerHTML = '';
+    FILIERES.forEach((filiere, idx) => {
+        let formations = filiere.formations;
+        if (niveauFilter !== 'all') {
+            formations = formations.filter(f => f.niveau === parseInt(niveauFilter));
+        }
+        // Filter sidebar by search
+        const matchSearch = !searchTerm ||
+            filiere.nom.toLowerCase().includes(searchTerm) ||
+            formations.some(f => f.titre.toLowerCase().includes(searchTerm));
+        if (formations.length === 0 || !matchSearch) return;
+
+        const item = document.createElement('div');
+        item.className = 'parcours-sidebar-item';
+        item.innerHTML = `
+            <span class="sidebar-icon">${filiere.icon}</span>
+            <span class="sidebar-name">${filiere.nom}</span>
+            <span class="sidebar-count">${formations.length}</span>
+        `;
+        item.addEventListener('click', () => {
+            const cards = document.querySelectorAll('.filiere-card');
+            // Find the matching card by index among visible ones
+            let visibleIdx = 0;
+            for (let i = 0; i < FILIERES.length; i++) {
+                let fmts = FILIERES[i].formations;
+                if (niveauFilter !== 'all') fmts = fmts.filter(f => f.niveau === parseInt(niveauFilter));
+                if (fmts.length === 0) continue;
+                const fSearch = !searchTerm ||
+                    FILIERES[i].nom.toLowerCase().includes(searchTerm) ||
+                    fmts.some(f => f.titre.toLowerCase().includes(searchTerm));
+                if (!fSearch) continue;
+                if (i === idx) break;
+                visibleIdx++;
+            }
+            if (cards[visibleIdx]) {
+                cards[visibleIdx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                cards[visibleIdx].classList.add('open');
+                // Highlight briefly
+                document.querySelectorAll('.parcours-sidebar-item').forEach(el => el.classList.remove('active'));
+                item.classList.add('active');
+            }
+        });
+        list.appendChild(item);
+    });
 }
 
 function toggleFiliere(header) {
@@ -290,9 +345,16 @@ window.filterByDomaine = filterByDomaine;
 // === Search ===
 function initSearch() {
     const catalogueInput = document.getElementById('catalogue-search-input');
+    const parcoursInput = document.getElementById('parcours-search-input');
     let debounceTimer;
     if (catalogueInput) {
         catalogueInput.addEventListener('input', () => {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => applyFilters(), 200);
+        });
+    }
+    if (parcoursInput) {
+        parcoursInput.addEventListener('input', () => {
             clearTimeout(debounceTimer);
             debounceTimer = setTimeout(() => applyFilters(), 200);
         });
@@ -314,8 +376,9 @@ function initFilters() {
 
 function applyFilters() {
     const catalogueSearch = document.getElementById('catalogue-search-input')?.value || '';
+    const parcoursSearch = document.getElementById('parcours-search-input')?.value || '';
     const filter = { niveau: currentNiveau, domaine: currentDomaineFilter };
-    renderParcours(filter);
+    renderParcours({ ...filter, search: parcoursSearch });
     renderCatalogue({ ...filter, search: catalogueSearch });
 }
 

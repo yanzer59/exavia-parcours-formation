@@ -77,7 +77,16 @@
     <!-- Main content: Parcours view -->
     <main id="section-parcours" class="main-content">
         <div class="section-inner">
-            <div id="parcours-container"></div>
+            <div class="parcours-layout">
+                <aside class="parcours-sidebar" id="parcours-sidebar">
+                    <div class="parcours-search-box">
+                        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                        <input type="text" id="parcours-search-input" placeholder="Rechercher une filière...">
+                    </div>
+                    <div id="parcours-sidebar-list"></div>
+                </aside>
+                <div id="parcours-container"></div>
+            </div>
         </div>
     </main>
 

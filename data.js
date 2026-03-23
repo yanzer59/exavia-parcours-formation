@@ -1,260 +1,10 @@
-// === EXAVIA - Data file - Auto-generated ===
+// === CERTIVIA - Data file - Auto-generated ===
 
-// === PARCOURS DATA - 18 Filières métiers ===
+// === PARCOURS DATA - 37 Filières métiers ===
 const FILIERES = [
   {
-    "id": "commerce-vente-magasin",
-    "nom": "Commerce & Vente — Magasin",
-    "icon": "🛒",
-    "color": "#f59e0b",
-    "formations": [
-      {
-        "titre": "TP Employé commercial",
-        "rncp": "RNCP37099",
-        "niveau": 3
-      },
-      {
-        "titre": "TP Conseiller de vente",
-        "rncp": "RNCP37098",
-        "niveau": 4
-      },
-      {
-        "titre": "TP Manager d'unité marchande",
-        "rncp": "RNCP41853",
-        "niveau": 5
-      }
-    ]
-  },
-  {
-    "id": "commerce-negociation",
-    "nom": "Commerce & Négociation",
-    "icon": "🤝",
-    "color": "#ea580c",
-    "formations": [
-      {
-        "titre": "TP Employé commercial",
-        "rncp": "RNCP37099",
-        "niveau": 3
-      },
-      {
-        "titre": "TP Conseiller commercial",
-        "rncp": "RNCP37717",
-        "niveau": 4
-      }
-    ]
-  },
-  {
-    "id": "restauration-collective",
-    "nom": "Restauration Collective & Gastronomie",
-    "icon": "🍳",
-    "color": "#dc2626",
-    "formations": [
-      {
-        "titre": "TP Commis de cuisine",
-        "rncp": "RNCP38722",
-        "niveau": 3
-      },
-      {
-        "titre": "TP Employé polyvalent en restauration",
-        "rncp": "RNCP38663",
-        "niveau": 3
-      },
-      {
-        "titre": "TP Cuisinier en restauration collective",
-        "rncp": "RNCP38871",
-        "niveau": 3
-      },
-      {
-        "titre": "TP Serveur en restauration",
-        "rncp": "RNCP38718",
-        "niveau": 3
-      },
-      {
-        "titre": "TP Chef de partie arts culinaires et pâtisserie",
-        "rncp": "RNCP39515",
-        "niveau": 4
-      },
-      {
-        "titre": "TP Responsable de petite ou moyenne structure",
-        "rncp": "RNCP38575",
-        "niveau": 6
-      }
-    ]
-  },
-  {
-    "id": "hotellerie-tourisme",
-    "nom": "Hôtellerie & Tourisme",
-    "icon": "🏨",
-    "color": "#0891b2",
-    "formations": [
-      {
-        "titre": "TP Employé d'étage hôtellerie",
-        "rncp": "RNCP38872",
-        "niveau": 3
-      },
-      {
-        "titre": "TP Responsable d'établissement touristique",
-        "rncp": "RNCP35527",
-        "niveau": 5
-      }
-    ]
-  },
-  {
-    "id": "electricite-batiment",
-    "nom": "Électricité du Bâtiment",
-    "icon": "⚡",
-    "color": "#eab308",
-    "formations": [
-      {
-        "titre": "TP Électricien d'équipement du bâtiment",
-        "rncp": "RNCP37442",
-        "niveau": 3
-      },
-      {
-        "titre": "TP Électricien d'installation et maintenance systèmes automatisés",
-        "rncp": "RNCP37446",
-        "niveau": 4
-      },
-      {
-        "titre": "TP Technicien d'équipement et d'exploitation en électricité",
-        "rncp": "RNCP40696",
-        "niveau": 4
-      },
-      {
-        "titre": "TP Technicien du bâtiment communicant et connecté",
-        "rncp": "RNCP35330",
-        "niveau": 5
-      },
-      {
-        "titre": "TP Technicien de bureau d'études en électricité",
-        "rncp": "RNCP35530",
-        "niveau": 5
-      }
-    ]
-  },
-  {
-    "id": "dev-informatique",
-    "nom": "Développement Informatique & Systèmes",
-    "icon": "💻",
-    "color": "#7c3aed",
-    "formations": [
-      {
-        "titre": "TP Agent de reconditionnement numérique",
-        "rncp": "RNCP36170",
-        "niveau": 3
-      },
-      {
-        "titre": "TP Développeur web et web mobile",
-        "rncp": "RNCP37674",
-        "niveau": 5
-      },
-      {
-        "titre": "TP Concepteur développeur d'applications",
-        "rncp": "RNCP35634",
-        "niveau": 6
-      },
-      {
-        "titre": "TP Administrateur système DevOps",
-        "rncp": "RNCP36061",
-        "niveau": 6
-      }
-    ]
-  },
-  {
-    "id": "design-creation",
-    "nom": "Design & Création Numérique",
-    "icon": "🎨",
-    "color": "#ec4899",
-    "formations": [
-      {
-        "titre": "TP Graphiste",
-        "rncp": "RNCP39532",
-        "niveau": 5
-      },
-      {
-        "titre": "TP Concepteur designer UI",
-        "rncp": "RNCP35634",
-        "niveau": 6
-      }
-    ]
-  },
-  {
-    "id": "telecom-fibre",
-    "nom": "Télécommunications & Fibre Optique",
-    "icon": "📡",
-    "color": "#0284c7",
-    "formations": [
-      {
-        "titre": "TP Installateur de réseaux télécom en fibre optique",
-        "rncp": "RNCP35992",
-        "niveau": 3
-      },
-      {
-        "titre": "TP Chargé d'études de réseaux de télécommunications",
-        "rncp": "RNCP36317",
-        "niveau": 5
-      },
-      {
-        "titre": "TP Administrateur réseau NetOps",
-        "rncp": "RNCP36163",
-        "niveau": 6
-      }
-    ]
-  },
-  {
-    "id": "transport-logistique",
-    "nom": "Transport & Logistique",
-    "icon": "🚛",
-    "color": "#059669",
-    "formations": [
-      {
-        "titre": "TP Cariste d'entrepôt",
-        "rncp": "RNCP35229",
-        "niveau": 3
-      },
-      {
-        "titre": "TP Conducteur de transport en commun",
-        "rncp": "RNCP37086",
-        "niveau": 3
-      },
-      {
-        "titre": "TP Gestionnaire des opérations de transport routier",
-        "rncp": "RNCP37100",
-        "niveau": 4
-      },
-      {
-        "titre": "TP Organisateur de transports aériens ou maritimes",
-        "rncp": "RNCP37103",
-        "niveau": 5
-      }
-    ]
-  },
-  {
-    "id": "admin-rh",
-    "nom": "Administration & Ressources Humaines",
-    "icon": "📋",
-    "color": "#4f46e5",
-    "formations": [
-      {
-        "titre": "TP Secrétaire assistant",
-        "rncp": "RNCP36804",
-        "niveau": 4
-      },
-      {
-        "titre": "TP Comptable assistant",
-        "rncp": "RNCP37121",
-        "niveau": 4
-      },
-      {
-        "titre": "TP Responsable de petite ou moyenne structure",
-        "rncp": "RNCP38575",
-        "niveau": 6
-      }
-    ]
-  },
-  {
-    "id": "btp-gros-oeuvre",
-    "nom": "BTP — Gros Œuvre & Travaux",
+    "id": "maconnerie-gros-oeuvre",
+    "nom": "Maçonnerie & Gros Œuvre",
     "icon": "🏗️",
     "color": "#b45309",
     "formations": [
@@ -264,18 +14,38 @@ const FILIERES = [
         "niveau": 3
       },
       {
+        "titre": "TP Maçon du bâti ancien",
+        "rncp": "RNCP39178",
+        "niveau": 3
+      },
+      {
         "titre": "TP Coffreur bancheur",
         "rncp": "RNCP35312",
         "niveau": 3
       },
       {
+        "titre": "TP Tailleur de pierre",
+        "rncp": "RNCP38550",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Couvreur-zingueur",
+        "rncp": "RNCP36101",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Etancheur toiture bâtiment",
+        "rncp": "RNCP37701",
+        "niveau": 3
+      },
+      {
         "titre": "TP Chef d'équipe gros œuvre",
-        "rncp": "RNCP38749",
+        "rncp": "RNCP38746",
         "niveau": 4
       },
       {
         "titre": "TP Assistant chef de chantier gros œuvre",
-        "rncp": "RNCP38747",
+        "rncp": "RNCP38749",
         "niveau": 4
       },
       {
@@ -286,67 +56,13 @@ const FILIERES = [
       {
         "titre": "TP Conducteur de travaux du bâtiment et du génie civil",
         "rncp": "RNCP40217",
-        "niveau": 6
-      }
-    ]
-  },
-  {
-    "id": "formation-insertion",
-    "nom": "Formation & Insertion Professionnelle",
-    "icon": "🎓",
-    "color": "#0d9488",
-    "formations": [
-      {
-        "titre": "TP Encadrant technique d'insertion",
-        "rncp": "RNCP35234",
-        "niveau": 4
-      },
-      {
-        "titre": "TP Formateur professionnel d'adultes",
-        "rncp": "RNCP37275",
         "niveau": 5
       }
     ]
   },
   {
-    "id": "relation-client",
-    "nom": "Relation Client & Médiation",
-    "icon": "📞",
-    "color": "#be185d",
-    "formations": [
-      {
-        "titre": "TP Agent de médiation, information, services",
-        "rncp": "RNCP37722",
-        "niveau": 3
-      },
-      {
-        "titre": "TP Conseiller relation client à distance",
-        "rncp": "RNCP35304",
-        "niveau": 4
-      },
-      {
-        "titre": "TP Médiateur social accès aux droits et services",
-        "rncp": "RNCP37722",
-        "niveau": 4
-      }
-    ]
-  },
-  {
-    "id": "chauffage-clim",
-    "nom": "Chauffage, Climatisation & Ventilation",
-    "icon": "🌡️",
-    "color": "#e11d48",
-    "formations": [
-      {
-        "titre": "TP Technicien de maintenance CVC",
-        "rncp": "RNCP35197",
-        "niveau": 4
-      }
-    ]
-  },
-  {
-    "id": "btp-finitions",
-    "nom": "BTP — Second Œuvre & Finitions",
+    "id": "second-oeuvre-finitions",
+    "nom": "Second Œuvre & Finitions",
     "icon": "🖌️",
     "color": "#d97706",
     "formations": [
@@ -356,8 +72,18 @@ const FILIERES = [
         "niveau": 3
       },
       {
+        "titre": "TP Plâtrier traditionnel",
+        "rncp": "RNCP37874",
+        "niveau": 3
+      },
+      {
         "titre": "TP Peintre en bâtiment",
         "rncp": "RNCP36257",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Peintre façadier itéiste",
+        "rncp": "RNCP39891",
         "niveau": 3
       },
       {
@@ -376,6 +102,16 @@ const FILIERES = [
         "niveau": 4
       },
       {
+        "titre": "TP Peintre applicateur de revêtements techniques",
+        "rncp": "RNCP40697",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Plaquiste spécialisé",
+        "rncp": "RNCP40314",
+        "niveau": 4
+      },
+      {
         "titre": "TP Chef d'équipe en aménagement finitions",
         "rncp": "RNCP38751",
         "niveau": 4
@@ -384,11 +120,1083 @@ const FILIERES = [
         "titre": "TP Chef de chantier aménagement finitions",
         "rncp": "RNCP38747",
         "niveau": 4
+      },
+      {
+        "titre": "TP Conducteur de travaux aménagement finitions",
+        "rncp": "RNCP38723",
+        "niveau": 5
       }
     ]
   },
   {
-    "id": "sante-social",
+    "id": "charpente-menuiserie-metallerie",
+    "nom": "Charpente, Menuiserie & Métallerie",
+    "icon": "🪚",
+    "color": "#92400e",
+    "formations": [
+      {
+        "titre": "TP Charpentier bois",
+        "rncp": "RNCP35508",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Constructeur bois",
+        "rncp": "RNCP35507",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Menuisier agenceur",
+        "rncp": "RNCP36256",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Menuisier de fabrication bois et dérivés",
+        "rncp": "RNCP35823",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Menuisier aluminium",
+        "rncp": "RNCP37444",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Métallier",
+        "rncp": "RNCP38719",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Ferronnier",
+        "rncp": "RNCP38720",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Dessinateur projeteur d'ouvrages de métallerie",
+        "rncp": "RNCP37293",
+        "niveau": 5
+      }
+    ]
+  },
+  {
+    "id": "travaux-publics-vrd",
+    "nom": "Travaux Publics & VRD",
+    "icon": "🚧",
+    "color": "#78716c",
+    "formations": [
+      {
+        "titre": "TP Canalisateur",
+        "rncp": "RNCP38078",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Maçon en voirie et réseaux divers",
+        "rncp": "RNCP38080",
+        "niveau": 3
+      },
+      {
+        "titre": "TP conducteur d'engins de chantiers urbains",
+        "rncp": "RNCP35824",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Conducteur d'engins de grands terrassements",
+        "rncp": "RNCP35827",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Conducteur de grue à tour",
+        "rncp": "RNCP35826",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Ouvrier du génie écologique",
+        "rncp": "RNCP35934",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Scaphandrier travaux publics",
+        "rncp": "RNCP35232",
+        "niveau": 3
+      }
+    ]
+  },
+  {
+    "id": "etudes-conception-batiment",
+    "nom": "Études, Conception & Topographie",
+    "icon": "📐",
+    "color": "#475569",
+    "formations": [
+      {
+        "titre": "TP Métreur assistant du bâtiment",
+        "rncp": "RNCP40137",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Technicien d'études du bâtiment en dessin de projet",
+        "rncp": "RNCP39519",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien métreur du bâtiment",
+        "rncp": "RNCP40138",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien de bureau d'études en électricité des bâtiments",
+        "rncp": "RNCP35530",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Opérateur en détection de réseaux",
+        "rncp": "RNCP37101",
+        "niveau": 4
+      },
+      {
+        "titre": "TP BIM modeleur du bâtiment",
+        "rncp": "RNCP39520",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Dessinateur projeteur en béton armé",
+        "rncp": "RNCP40214",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Technicien supérieur du bâtiment, option économie de la construction",
+        "rncp": "RNCP40136",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Technicien supérieur du bâtiment, option étude de prix",
+        "rncp": "RNCP40135",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Chargé d'affaires du bâtiment",
+        "rncp": "RNCP35503",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Géomètre topographe d'entreprise du bâtiment et des travaux publics",
+        "rncp": "RNCP37100",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Technicien géomètre en cabinet",
+        "rncp": "RNCP37104",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Technicien en détection et géoréférencement de réseaux",
+        "rncp": "RNCP37102",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Technicien en géomatique",
+        "rncp": "RNCP37103",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Coordinateur BIM du bâtiment",
+        "rncp": "RNCP39408",
+        "niveau": 6
+      }
+    ]
+  },
+  {
+    "id": "electricite-batiment-connecte",
+    "nom": "Électricité & Bâtiment Connecté",
+    "icon": "⚡",
+    "color": "#eab308",
+    "formations": [
+      {
+        "titre": "TP Electricien d'équipement du bâtiment",
+        "rncp": "RNCP37442",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Electricien d'installation et de maintenance des systèmes automatisés",
+        "rncp": "RNCP38561",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Monteur de réseaux électriques aéro-souterrains",
+        "rncp": "RNCP35828",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Agent de maintenance des bâtiments",
+        "rncp": "RNCP35510",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Technicien d'équipement et d'exploitation en électricité",
+        "rncp": "RNCP37446",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Chargé de travaux en réseaux électriques aériens et souterrains",
+        "rncp": "RNCP35825",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien du bâtiment communicant et connecté",
+        "rncp": "RNCP35330",
+        "niveau": 4
+      }
+    ]
+  },
+  {
+    "id": "genie-climatique-thermique",
+    "nom": "Génie Climatique & Thermique",
+    "icon": "🌡️",
+    "color": "#e11d48",
+    "formations": [
+      {
+        "titre": "TP Installateur thermique et sanitaire",
+        "rncp": "RNCP35189",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Monteur dépanneur frigoriste",
+        "rncp": "RNCP37876",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Monteur-dépanneur en climatisation",
+        "rncp": "RNCP37940",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Agent de maintenance CVC",
+        "rncp": "RNCP38744",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Agent de maintenance d'équipements de confort climatique",
+        "rncp": "RNCP38079",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Technicien d'intervention en froid commercial et climatisation",
+        "rncp": "RNCP39437",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien d'intervention en froid industriel",
+        "rncp": "RNCP38869",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien d'intervention en froid et équipements de cuisines professionnelles",
+        "rncp": "RNCP35525",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien froid embarqué routier",
+        "rncp": "RNCP36242",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien de maintenance CVC",
+        "rncp": "RNCP38748",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien de maintenance d'équipements de confort climatique",
+        "rncp": "RNCP38081",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien d'installation en équipements de confort climatique",
+        "rncp": "RNCP35231",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien de maintenance en chauffage et énergies renouvelables",
+        "rncp": "RNCP35333",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien d'études en chauffage, ventilation et climatisation",
+        "rncp": "RNCP37292",
+        "niveau": 5
+      }
+    ]
+  },
+  {
+    "id": "chaudronnerie-soudure",
+    "nom": "Chaudronnerie, Soudure & Tuyauterie",
+    "icon": "🔧",
+    "color": "#dc2626",
+    "formations": [
+      {
+        "titre": "TP Agent de fabrication et montage en chaudronnerie",
+        "rncp": "RNCP35937",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Chaudronnier formeur aéronautique",
+        "rncp": "RNCP39182",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Soudeur assembleur industriel",
+        "rncp": "RNCP40037",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Soudeur en tuyauterie industrielle",
+        "rncp": "RNCP40477",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Tuyauteur industriel",
+        "rncp": "RNCP40471",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Monteur en calorifuge industriel",
+        "rncp": "RNCP35723",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Technicien en chaudronnerie",
+        "rncp": "RNCP40801",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Soudeur programmeur de cellules robotisées",
+        "rncp": "RNCP36169",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Dessinateur projeteur en tuyauterie et chaudronnerie industrielles",
+        "rncp": "RNCP39175",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Dessinateur projeteur en construction métallique",
+        "rncp": "RNCP37290",
+        "niveau": 5
+      }
+    ]
+  },
+  {
+    "id": "usinage-mecanique",
+    "nom": "Usinage & Mécanique de Précision",
+    "icon": "⚙️",
+    "color": "#6366f1",
+    "formations": [
+      {
+        "titre": "TP Fraiseur en réalisation de pièces mécaniques",
+        "rncp": "RNCP36238",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Tourneur en réalisation de pièces mécaniques",
+        "rncp": "RNCP36236",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Opérateur régleur en usinage assisté par ordinateur",
+        "rncp": "RNCP40699",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Ajusteur monteur aéronautique",
+        "rncp": "RNCP40088",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Fraiseur d'outillages en usinage conventionnel et numérique",
+        "rncp": "RNCP38668",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien d'études en mécanique",
+        "rncp": "RNCP40215",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Régleur de machines-outils à commande numérique",
+        "rncp": "RNCP34738",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien supérieur en conception industrielle de systèmes mécaniques",
+        "rncp": "RNCP37317",
+        "niveau": 5
+      }
+    ]
+  },
+  {
+    "id": "production-industrielle",
+    "nom": "Production & Pilotage Industriel",
+    "icon": "🏭",
+    "color": "#7c3aed",
+    "formations": [
+      {
+        "titre": "TP Agent de fabrication industrielle",
+        "rncp": "RNCP37397",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Conducteur d'installation et de machines automatisées",
+        "rncp": "RNCP37398",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Conducteur d'équipements agroalimentaires",
+        "rncp": "RNCP38374",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Monteur qualifié d'équipements industriels",
+        "rncp": "RNCP39083",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Conducteur de machines de plasturgie",
+        "rncp": "RNCP37877",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Technicien de production industrielle",
+        "rncp": "RNCP39176",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien supérieur en production industrielle",
+        "rncp": "RNCP38661",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Technicien supérieur des méthodes d'industrialisation",
+        "rncp": "RNCP39174",
+        "niveau": 5
+      }
+    ]
+  },
+  {
+    "id": "chimie-laboratoire",
+    "nom": "Chimie & Laboratoire",
+    "icon": "🧪",
+    "color": "#0891b2",
+    "formations": [
+      {
+        "titre": "TP Conducteur d'appareils de l'industrie de la chimie",
+        "rncp": "RNCP35314",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Technicien de fabrication de l'industrie de la chimie",
+        "rncp": "RNCP35308",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien de laboratoire",
+        "rncp": "RNCP35310",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien supérieur physicien chimiste",
+        "rncp": "RNCP39084",
+        "niveau": 5
+      }
+    ]
+  },
+  {
+    "id": "materiaux-composites",
+    "nom": "Matériaux Composites",
+    "icon": "🛥️",
+    "color": "#0d9488",
+    "formations": [
+      {
+        "titre": "TP Stratifieur multiprocédés en matériaux composites",
+        "rncp": "RNCP35229",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Opérateur composites hautes performances",
+        "rncp": "RNCP41064",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Constructeur aménageur nautique bois et composites",
+        "rncp": "RNCP39282",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Technicien des matériaux composites",
+        "rncp": "RNCP38669",
+        "niveau": 4
+      }
+    ]
+  },
+  {
+    "id": "controle-qualite",
+    "nom": "Contrôle Qualité & Essais",
+    "icon": "🔍",
+    "color": "#059669",
+    "formations": [
+      {
+        "titre": "TP Technicien de contrôle et de métrologie industrielle",
+        "rncp": "RNCP37318",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien supérieur de contrôle non destructif",
+        "rncp": "RNCP36317",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Inspecteur qualité aéronautique et spatiale",
+        "rncp": "RNCP37399",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Technicien supérieur en fabrication additive",
+        "rncp": "RNCP36168",
+        "niveau": 5
+      }
+    ]
+  },
+  {
+    "id": "maintenance-electronique",
+    "nom": "Maintenance & Électronique Industrielle",
+    "icon": "🔌",
+    "color": "#4f46e5",
+    "formations": [
+      {
+        "titre": "TP Electromécanicien de maintenance industrielle",
+        "rncp": "RNCP37276",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Agent de montage et de câblage en électronique",
+        "rncp": "RNCP38664",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Monteur câbleur en aéronautique",
+        "rncp": "RNCP37400",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Technicien d'après-vente en électroménager et audiovisuel",
+        "rncp": "RNCP39177",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien supérieur de maintenance industrielle",
+        "rncp": "RNCP36247",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Electronicien de tests et développement",
+        "rncp": "RNCP35307",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Technicien supérieur en automatique et informatique industrielle",
+        "rncp": "RNCP38713",
+        "niveau": 5
+      }
+    ]
+  },
+  {
+    "id": "mecanique-automobile",
+    "nom": "Mécanique Automobile",
+    "icon": "🚗",
+    "color": "#1e40af",
+    "formations": [
+      {
+        "titre": "TP Mécanicien automobile",
+        "rncp": "RNCP38102",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Mécanicien de maintenance automobile",
+        "rncp": "RNCP38101",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Mécanicien réparateur de motocycles",
+        "rncp": "RNCP39538",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Technicien électromécanicien automobile",
+        "rncp": "RNCP38295",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Contrôleur technique automobile",
+        "rncp": "RNCP36371",
+        "niveau": 4
+      }
+    ]
+  },
+  {
+    "id": "vehicules-engins",
+    "nom": "Véhicules Industriels & Engins",
+    "icon": "🚛",
+    "color": "#854d0e",
+    "formations": [
+      {
+        "titre": "TP Mécanicien réparateur de véhicules industriels",
+        "rncp": "RNCP35227",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Mécanicien réparateur des matériels agricoles",
+        "rncp": "RNCP38872",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Mécanicien réparateur des matériels d'espaces verts",
+        "rncp": "RNCP39008",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Mécanicien réparateur de matériels de chantier et de manutention",
+        "rncp": "RNCP39283",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Technicien de maintenance d'engins et de matériels de chantier et de manutention",
+        "rncp": "RNCP39007",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien de maintenance d'engins et de matériels « machinisme agricole »",
+        "rncp": "RNCP39892",
+        "niveau": 4
+      }
+    ]
+  },
+  {
+    "id": "gastronomie-arts-culinaires",
+    "nom": "Gastronomie & Arts Culinaires",
+    "icon": "👨‍🍳",
+    "color": "#dc2626",
+    "formations": [
+      {
+        "titre": "TP Commis de cuisine",
+        "rncp": "RNCP38722",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Cuisinier",
+        "rncp": "RNCP35316",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Chef de partie arts culinaires et pâtisserie",
+        "rncp": "RNCP39515",
+        "niveau": 4
+      }
+    ]
+  },
+  {
+    "id": "restauration-collective",
+    "nom": "Restauration Collective",
+    "icon": "🍽️",
+    "color": "#ea580c",
+    "formations": [
+      {
+        "titre": "TP Cuisinier en restauration collective",
+        "rncp": "RNCP38871",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Serveur en restauration",
+        "rncp": "RNCP39534",
+        "niveau": 3
+      }
+    ]
+  },
+  {
+    "id": "restauration-rapide",
+    "nom": "Restauration Rapide & Polyvalente",
+    "icon": "🍔",
+    "color": "#f59e0b",
+    "formations": [
+      {
+        "titre": "TP Employé polyvalent en restauration",
+        "rncp": "RNCP38663",
+        "niveau": 3
+      }
+    ]
+  },
+  {
+    "id": "hotellerie-hebergement",
+    "nom": "Hôtellerie & Hébergement",
+    "icon": "🏨",
+    "color": "#0891b2",
+    "formations": [
+      {
+        "titre": "TP Employé d'étage hôtellerie et hôtellerie de plein air",
+        "rncp": "RNCP38547",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Gouvernant en hôtellerie",
+        "rncp": "RNCP39533",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Réceptionniste en hôtellerie",
+        "rncp": "RNCP34157",
+        "niveau": 4
+      }
+    ]
+  },
+  {
+    "id": "tourisme-loisirs",
+    "nom": "Tourisme & Loisirs",
+    "icon": "✈️",
+    "color": "#2563eb",
+    "formations": [
+      {
+        "titre": "TP Chargé d'accueil touristique et de loisirs",
+        "rncp": "RNCP37396",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Guide accompagnateur touristique",
+        "rncp": "RNCP38548",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Animateur d'activités touristiques et de loisirs",
+        "rncp": "RNCP37387",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Conseiller vendeur en voyages",
+        "rncp": "RNCP37295",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Responsable de projets touristiques",
+        "rncp": "RNCP35527",
+        "niveau": 5
+      }
+    ]
+  },
+  {
+    "id": "vente-magasin",
+    "nom": "Vente en Magasin & Distribution",
+    "icon": "🛒",
+    "color": "#f59e0b",
+    "formations": [
+      {
+        "titre": "TP Employé commercial",
+        "rncp": "RNCP37099",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Employé technicien-vendeur en matériel de sport",
+        "rncp": "RNCP35992",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Conseiller de vente",
+        "rncp": "RNCP37098",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Manager d'unité marchande",
+        "rncp": "RNCP38676",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Manager d'unité marchande",
+        "rncp": "RNCP41853",
+        "niveau": 5
+      }
+    ]
+  },
+  {
+    "id": "commerce-negociation",
+    "nom": "Commerce & Négociation",
+    "icon": "🤝",
+    "color": "#ea580c",
+    "formations": [
+      {
+        "titre": "TP Conseiller commercial",
+        "rncp": "RNCP37717",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Négociateur technico-commercial",
+        "rncp": "RNCP39063",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Assistant commercial",
+        "rncp": "RNCP41254",
+        "niveau": 5
+      }
+    ]
+  },
+  {
+    "id": "developpement-web",
+    "nom": "Développement Web & Logiciel",
+    "icon": "💻",
+    "color": "#7c3aed",
+    "formations": [
+      {
+        "titre": "TP Agent de reconditionnement numérique",
+        "rncp": "RNCP38718",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Développeur web et web mobile",
+        "rncp": "RNCP37674",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Concepteur développeur d'applications",
+        "rncp": "RNCP37873",
+        "niveau": 6
+      }
+    ]
+  },
+  {
+    "id": "systemes-reseaux-cyber",
+    "nom": "Systèmes, Réseaux & Cybersécurité",
+    "icon": "🖥️",
+    "color": "#1d4ed8",
+    "formations": [
+      {
+        "titre": "TP Technicien informatique de proximité",
+        "rncp": "RNCP40799",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien réseaux IP",
+        "rncp": "RNCP35295",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien supérieur systèmes et réseaux",
+        "rncp": "RNCP37682",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Administrateur d'infrastructures sécurisées",
+        "rncp": "RNCP37680",
+        "niveau": 6
+      },
+      {
+        "titre": "TP Administrateur système DevOps",
+        "rncp": "RNCP36061",
+        "niveau": 6
+      },
+      {
+        "titre": "TP Administrateur réseau NetOps",
+        "rncp": "RNCP36163",
+        "niveau": 6
+      }
+    ]
+  },
+  {
+    "id": "design-creation-multimedia",
+    "nom": "Design, Création & Multimédia",
+    "icon": "🎨",
+    "color": "#ec4899",
+    "formations": [
+      {
+        "titre": "TP Graphiste",
+        "rncp": "RNCP39532",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Monteur audiovisuel",
+        "rncp": "RNCP38752",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Médiateur numérique",
+        "rncp": "RNCP40695",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Concepteur designer UI",
+        "rncp": "RNCP35634",
+        "niveau": 6
+      }
+    ]
+  },
+  {
+    "id": "telecom-fibre",
+    "nom": "Télécommunications & Fibre Optique",
+    "icon": "📡",
+    "color": "#0284c7",
+    "formations": [
+      {
+        "titre": "TP Installateur de réseaux de télécommunications en fibre optique",
+        "rncp": "RNCP37443",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Technicien d'intervention de réseaux de télécommunications en fibre optique",
+        "rncp": "RNCP37445",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Chargé d'études de réseaux de télécommunications",
+        "rncp": "RNCP40698",
+        "niveau": 5
+      }
+    ]
+  },
+  {
+    "id": "transport-conduite",
+    "nom": "Transport & Conduite Routière",
+    "icon": "🚚",
+    "color": "#059669",
+    "formations": [
+      {
+        "titre": "TP Conducteur du transport routier de marchandises sur tous véhicules",
+        "rncp": "RNCP39795",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Conducteur de transport en commun sur route",
+        "rncp": "RNCP37086",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Conducteur du transport routier interurbain de voyageurs",
+        "rncp": "RNCP35222",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Exploitant en transport routier de marchandises",
+        "rncp": "RNCP40992",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Exploitant régulateur en transport routier de voyageurs",
+        "rncp": "RNCP39792",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Gestionnaire des opérations de transport routier de marchandises",
+        "rncp": "RNCP40990",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Organisateur de transports aériens ou maritimes de marchandises",
+        "rncp": "RNCP40991",
+        "niveau": 5
+      }
+    ]
+  },
+  {
+    "id": "logistique-entreposage",
+    "nom": "Logistique & Entreposage",
+    "icon": "📦",
+    "color": "#065f46",
+    "formations": [
+      {
+        "titre": "TP Agent magasinier",
+        "rncp": "RNCP40216",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Cariste d'entrepôt",
+        "rncp": "RNCP40499",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Préparateur de commandes en entrepôt",
+        "rncp": "RNCP40498",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Technicien en logistique d'entreposage",
+        "rncp": "RNCP36237",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien supérieur en méthodes et exploitation logistique",
+        "rncp": "RNCP37277",
+        "niveau": 5
+      }
+    ]
+  },
+  {
+    "id": "comptabilite-gestion",
+    "nom": "Comptabilité & Gestion d'Entreprise",
+    "icon": "📊",
+    "color": "#4338ca",
+    "formations": [
+      {
+        "titre": "TP Comptable assistant",
+        "rncp": "RNCP37121",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Secrétaire comptable",
+        "rncp": "RNCP37123",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Gestionnaire comptable et fiscal",
+        "rncp": "RNCP37949",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Gestionnaire de paie",
+        "rncp": "RNCP37948",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Assistant immobilier",
+        "rncp": "RNCP40989",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Assistant import-export",
+        "rncp": "RNCP36964",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Responsable de petite ou moyenne structure",
+        "rncp": "RNCP38575",
+        "niveau": 6
+      }
+    ]
+  },
+  {
+    "id": "secretariat-assistance",
+    "nom": "Secrétariat & Assistance",
+    "icon": "📋",
+    "color": "#6366f1",
+    "formations": [
+      {
+        "titre": "TP Secrétaire assistant",
+        "rncp": "RNCP36804",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Secrétaire assistant médico-administratif",
+        "rncp": "RNCP40800",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Assistant de direction",
+        "rncp": "RNCP38667",
+        "niveau": 5
+      }
+    ]
+  },
+  {
+    "id": "sante-medico-social",
     "nom": "Santé & Médico-Social",
     "icon": "🏥",
     "color": "#14b8a6",
@@ -399,45 +1207,244 @@ const FILIERES = [
         "niveau": 3
       },
       {
-        "titre": "TP Agent de service médico-social",
+        "titre": "TP Accompagnant éducatif et social",
         "rncp": "RNCP36004",
         "niveau": 3
       },
       {
-        "titre": "TP Technicien médical de laboratoire",
-        "rncp": "RNCP36004",
+        "titre": "TP Auxiliaire en prothèse dentaire",
+        "rncp": "RNCP35301",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Agent technique prothésiste orthésiste",
+        "rncp": "RNCP35303",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Agent de propreté et d'hygiène",
+        "rncp": "RNCP37872",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Technicien en montage et vente d'optique-lunetterie",
+        "rncp": "RNCP39005",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien d'équipement d'aide à la personne",
+        "rncp": "RNCP38562",
+        "niveau": 4
+      }
+    ]
+  },
+  {
+    "id": "mediation-relation-client",
+    "nom": "Médiation & Relation Client",
+    "icon": "📞",
+    "color": "#be185d",
+    "formations": [
+      {
+        "titre": "TP Agent de médiation, information, services",
+        "rncp": "RNCP37722",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Conseiller relation client à distance",
+        "rncp": "RNCP35304",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Médiateur social accès aux droits et services",
+        "rncp": "RNCP36241",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Manager d'équipe relation client à distance",
+        "rncp": "RNCP38665",
         "niveau": 5
       }
     ]
   },
   {
-    "id": "artisanat",
-    "nom": "Artisanat & Métiers d'Art",
-    "icon": "✨",
-    "color": "#a855f7",
+    "id": "formation-insertion",
+    "nom": "Formation & Insertion Professionnelle",
+    "icon": "🎓",
+    "color": "#0d9488",
     "formations": [
       {
-        "titre": "TP Tapissier d'ameublement en siège",
-        "rncp": "RNCP37413",
-        "niveau": 3
+        "titre": "TP Encadrant technique d'insertion",
+        "rncp": "RNCP39794",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Formateur professionnel d'adultes",
+        "rncp": "RNCP37275",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Conseiller en insertion professionnelle",
+        "rncp": "RNCP37274",
+        "niveau": 5
       }
     ]
   },
   {
-    "id": "travaux-publics",
-    "nom": "Travaux Publics & Topographie",
-    "icon": "🚧",
-    "color": "#78716c",
+    "id": "environnement-energie",
+    "nom": "Environnement, Énergie & Dépollution",
+    "icon": "🌿",
+    "color": "#15803d",
     "formations": [
       {
-        "titre": "TP Chef d'équipe travaux publics",
-        "rncp": "RNCP38748",
+        "titre": "TP Agent technique de réception et de valorisation de déchets",
+        "rncp": "RNCP35234",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Opérateur de chantier de traitement de l'amiante",
+        "rncp": "RNCP38099",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Aide opérateur en dépollution pyrotechnique",
+        "rncp": "RNCP40315",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Agent de refabrication et de recyclage de batteries",
+        "rncp": "RNCP36170",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Agent d'assemblage et de maintenance de batteries",
+        "rncp": "RNCP36171",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Ouvrier de production horticole",
+        "rncp": "RNCP36954",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Ouvrier paysagiste",
+        "rncp": "RNCP37875",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Encadrant de chantier de traitement de l'amiante",
+        "rncp": "RNCP38100",
         "niveau": 4
       },
       {
-        "titre": "TP Conducteur de travaux du bâtiment et du génie civil",
-        "rncp": "RNCP40217",
-        "niveau": 6
+        "titre": "TP Opérateur en dépollution pyrotechnique",
+        "rncp": "RNCP35297",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien de traitement des eaux",
+        "rncp": "RNCP40313",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien en environnement et dépollution",
+        "rncp": "RNCP35197",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Encadrant technique d'une opération de traitement de l'amiante",
+        "rncp": "RNCP38098",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Chargé d'études thermiques, énergétiques et environnementales du bâtiment",
+        "rncp": "RNCP38546",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Chargé d'accompagnement à la rénovation énergétique du bâtiment",
+        "rncp": "RNCP39180",
+        "niveau": 5
+      }
+    ]
+  },
+  {
+    "id": "securite-surveillance",
+    "nom": "Sécurité & Surveillance",
+    "icon": "🛡️",
+    "color": "#374151",
+    "formations": [
+      {
+        "titre": "TP Agent de sûreté et de sécurité privée",
+        "rncp": "RNCP40298",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Opérateur en vidéoprotection et en télésurveillance",
+        "rncp": "RNCP37879",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Opérateur en télésurveillance et services associés",
+        "rncp": "RNCP38843",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Technicien de maintenance et de travaux en systèmes de sécurité incendie",
+        "rncp": "RNCP37294",
+        "niveau": 4
+      }
+    ]
+  },
+  {
+    "id": "artisanat-mode-metiers-art",
+    "nom": "Artisanat, Mode & Métiers d'Art",
+    "icon": "✨",
+    "color": "#a855f7",
+    "formations": [
+      {
+        "titre": "TP Tapissier-couturier d'ameublement",
+        "rncp": "RNCP36245",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Tapissier garnisseur",
+        "rncp": "RNCP36258",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Piqueur préparateur en maroquinerie",
+        "rncp": "RNCP37718",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Couturier en atelier mode et luxe",
+        "rncp": "RNCP39006",
+        "niveau": 3
+      },
+      {
+        "titre": "TP Sellier garnisseur véhicule de prestige et de collection",
+        "rncp": "RNCP40089",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Tapissier garnisseur",
+        "rncp": "RNCP37413",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Horloger",
+        "rncp": "RNCP39179",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Cordonnier multiservices",
+        "rncp": "RNCP38545",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Couturier retoucheur",
+        "rncp": "RNCP35228",
+        "niveau": 4
       }
     ]
   }

@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "pdf-parse": "^2.4.5",
-    "pdfjs-dist": "^5.5.207"
+    "pdfjs-dist": "^5.5.207",
+    "puppeteer": "^24.40.0"
   },
   "devDependencies": {
     "http-server": "^14.1.1"

@@ -516,3 +516,31 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: var(--gray-400); }
 
 .highlight { background: #fef08a; border-radius: 2px; }
+
+/* PDF Download button in filter bar */
+.pdf-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    margin-left: auto;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+    white-space: nowrap;
+}
+.pdf-download-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+    filter: brightness(1.1);
+}
+.pdf-download-btn svg {
+    flex-shrink: 0;
+}

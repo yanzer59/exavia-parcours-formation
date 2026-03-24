@@ -21,6 +21,8 @@ function initNavigation() {
             link.classList.add('active');
             document.getElementById('section-parcours').classList.toggle('hidden', section !== 'parcours');
             document.getElementById('section-catalogue').classList.toggle('hidden', section !== 'catalogue');
+            document.getElementById('pdf-btn-parcours').style.display = section === 'parcours' ? '' : 'none';
+            document.getElementById('pdf-btn-catalogue').style.display = section === 'catalogue' ? '' : 'none';
         });
     });
 }

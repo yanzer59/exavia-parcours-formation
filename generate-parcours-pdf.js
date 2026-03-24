@@ -299,6 +299,7 @@ function generateHTML() {
     color: #1e293b;
     line-height: 1.6;
     font-size: 10px;
+    background: #f5f3ff;
   }
   .page-break { page-break-before: always; }
   a { color: inherit; text-decoration: none; }
@@ -376,7 +377,8 @@ function generateHTML() {
 
   /* TOC */
   .toc {
-    padding: 50px 50px;
+    padding: 50px;
+    page-break-after: always;
   }
   .toc h1 {
     font-size: 26px;
@@ -406,9 +408,7 @@ function generateHTML() {
     align-items: center;
     gap: 8px;
     padding: 6px 4px;
-    border-bottom: 1px solid #f5f3ff;
   }
-  .toc-entry:hover { background: #faf5ff; }
   .toc-link { display: flex; align-items: center; gap: 8px; flex: 1; text-decoration: none; color: inherit; }
   .toc-num {
     font-size: 9px;
@@ -442,12 +442,10 @@ function generateHTML() {
     text-align: right;
   }
 
-  /* Parcours sections - flow naturally, avoid splitting one parcours across pages */
+  /* Parcours sections */
   .parcours-section {
-    padding: 20px 40px 16px;
+    padding: 30px 40px 20px;
     page-break-inside: avoid;
-    border-bottom: 2px solid #e2e8f0;
-    margin-bottom: 8px;
   }
   .parcours-header {
     padding: 14px 16px;
@@ -673,14 +671,10 @@ ${parcoursSections}
     path: './Certivia_Parcours_Formations_2026.pdf',
     format: 'A4',
     printBackground: true,
-    margin: { top: '20px', right: '0', bottom: '40px', left: '0' },
+    margin: { top: '0', right: '0', bottom: '25px', left: '0' },
     displayHeaderFooter: true,
     headerTemplate: '<span></span>',
-    footerTemplate: `
-      <div style="width:100%;text-align:center;font-size:8px;color:#94a3b8;font-family:Inter,sans-serif;padding:0 50px;display:flex;justify-content:space-between;">
-        <span>CERTIVIA - Parcours de Formation 2026</span>
-        <span>Page <span class="pageNumber"></span> / <span class="totalPages"></span></span>
-      </div>`,
+    footerTemplate: '<div style="width:100%;text-align:right;font-size:8px;color:#a0a0a0;padding-right:40px;"><span class="pageNumber"></span></div>',
   });
 
   await browser.close();

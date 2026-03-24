@@ -240,7 +240,7 @@ function generateHTML() {
     }).join('');
 
     return `
-      <div class="parcours-section page-break" id="parcours-${filiere.id}">
+      <div class="parcours-section" id="parcours-${filiere.id}">
         <div class="parcours-header" style="background: linear-gradient(135deg, ${filiere.color}15, ${filiere.color}08); border-left: 5px solid ${filiere.color}">
           <div class="parcours-header-top">
             <span class="parcours-icon">${filiere.icon}</span>
@@ -442,9 +442,12 @@ function generateHTML() {
     text-align: right;
   }
 
-  /* Parcours sections - new page per filière */
+  /* Parcours sections - flow naturally, avoid splitting one parcours across pages */
   .parcours-section {
-    padding: 25px 40px;
+    padding: 20px 40px 16px;
+    page-break-inside: avoid;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 8px;
   }
   .parcours-header {
     padding: 14px 16px;

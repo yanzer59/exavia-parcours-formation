@@ -80,13 +80,14 @@ function generateHTML() {
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', -apple-system, sans-serif; color: #1e293b; line-height: 1.5; font-size: 10px; }
+  body { font-family: 'Inter', -apple-system, sans-serif; color: #1e293b; line-height: 1.5; font-size: 10px; background: #f5f3ff; }
   .page-break { page-break-before: always; }
   a { color: inherit; text-decoration: none; }
 
   /* Cover */
   .cover {
-    height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
     background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
     color: white; text-align: center; position: relative;
   }
@@ -101,7 +102,7 @@ function generateHTML() {
   .cover-footer { position: absolute; bottom: 30px; font-size: 10px; color: #475569; }
 
   /* TOC */
-  .toc { padding: 50px 50px; }
+  .toc { padding: 15px 50px 50px; }
   .toc h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; color: #0f172a; }
   .toc h1::after { content: ''; display: block; width: 60px; height: 3px; background: #3b82f6; margin-top: 10px; margin-bottom: 16px; }
   .toc-subtitle { font-size: 11px; color: #64748b; margin-bottom: 20px; }
@@ -122,7 +123,7 @@ function generateHTML() {
   .stat-card .label { font-size: 9px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
 
   /* Filiere sections - new page per filière */
-  .filiere-section { padding: 30px 50px; }
+  .filiere-section { padding: 10px 50px 20px; }
   .filiere-header {
     display: flex; align-items: center; gap: 14px;
     padding: 16px 20px; background: #f8fafc; border-radius: 12px; margin-bottom: 16px;
@@ -221,10 +222,10 @@ ${filieresHTML}
     path: './Certivia_Catalogue_Formations_2026.pdf',
     format: 'A4',
     printBackground: true,
-    margin: { top: '20px', right: '0', bottom: '40px', left: '0' },
+    margin: { top: '35px', right: '0', bottom: '25px', left: '0' },
     displayHeaderFooter: true,
     headerTemplate: '<span></span>',
-    footerTemplate: `<div style="width:100%;font-size:8px;color:#94a3b8;font-family:sans-serif;padding:0 50px;display:flex;justify-content:space-between;"><span>CERTIVIA - Catalogue des Formations 2026</span><span>Page <span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`,
+    footerTemplate: '<div style="width:100%;text-align:right;font-size:8px;color:#a0a0a0;padding-right:40px;"><span class="pageNumber"></span></div>',
   });
 
   await browser.close();

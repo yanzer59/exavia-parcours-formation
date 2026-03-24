@@ -274,10 +274,6 @@ function generateHTML() {
               </div>
             </div>
 
-            <div class="debouche-block salaire-block">
-              <div class="debouche-label">Remuneration indicative</div>
-              <div class="salaire">${d.salaire}</div>
-            </div>
           </div>
         </div>
       </div>

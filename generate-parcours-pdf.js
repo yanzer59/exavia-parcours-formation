@@ -240,7 +240,7 @@ function generateHTML() {
     }).join('');
 
     return `
-      <div class="parcours-section" id="parcours-${filiere.id}">
+      <div class="parcours-section page-break" id="parcours-${filiere.id}">
         <div class="parcours-header" style="background: linear-gradient(135deg, ${filiere.color}15, ${filiere.color}08); border-left: 5px solid ${filiere.color}">
           <div class="parcours-header-top">
             <span class="parcours-icon">${filiere.icon}</span>
@@ -442,25 +442,23 @@ function generateHTML() {
     text-align: right;
   }
 
-  /* Parcours sections - compact, continuous flow */
+  /* Parcours sections - new page per filière */
   .parcours-section {
-    padding: 12px 40px 8px;
-    page-break-inside: avoid;
+    padding: 25px 40px;
   }
   .parcours-header {
-    padding: 12px 14px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    page-break-after: avoid;
+    padding: 14px 16px;
+    border-radius: 10px;
+    margin-bottom: 14px;
   }
   .parcours-header-top {
     display: flex;
     align-items: center;
     gap: 12px;
   }
-  .parcours-icon { font-size: 24px; }
+  .parcours-icon { font-size: 28px; }
   .parcours-header h2 {
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 800;
     color: #0f172a;
   }
@@ -493,6 +491,7 @@ function generateHTML() {
     gap: 10px;
     align-items: flex-start;
     page-break-inside: avoid;
+    margin-bottom: 4px;
   }
   .level-badge {
     font-size: 8px;
@@ -510,14 +509,17 @@ function generateHTML() {
     color: #475569;
     margin-bottom: 4px;
   }
-  .level-formations { margin-bottom: 4px; }
+  .level-formations { margin-bottom: 6px; }
   .level-formation {
     display: flex;
     align-items: center;
     gap: 6px;
     font-size: 9px;
-    padding: 3px 0;
+    padding: 5px 6px;
+    margin-bottom: 3px;
     color: #1e293b;
+    background: white;
+    border-radius: 4px;
   }
   .dot {
     width: 5px;
@@ -533,7 +535,7 @@ function generateHTML() {
   .arrow-down {
     display: flex;
     justify-content: center;
-    padding: 2px 0;
+    padding: 4px 0;
   }
 
   /* Debouches */

@@ -53,9 +53,9 @@ function generateHTML() {
         </div>`;
     }).join('');
 
-    // NO page-break: let content flow naturally
+    // Each filière starts on a new page
     return `
-      <div class="filiere-section" id="filiere-${filiere.id}">
+      <div class="filiere-section page-break" id="filiere-${filiere.id}">
         <div class="filiere-header" style="border-left: 5px solid ${filiere.color}">
           <span class="filiere-icon">${filiere.icon}</span>
           <div>
@@ -121,38 +121,37 @@ function generateHTML() {
   .stat-card .value { font-size: 28px; font-weight: 800; color: #1e40af; }
   .stat-card .label { font-size: 9px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
 
-  /* Filiere sections - NO page break, continuous flow */
-  .filiere-section { padding: 16px 50px 8px; }
+  /* Filiere sections - new page per filière */
+  .filiere-section { padding: 30px 50px; }
   .filiere-header {
-    display: flex; align-items: center; gap: 12px;
-    padding: 12px 16px; background: #f8fafc; border-radius: 10px; margin-bottom: 10px;
-    page-break-after: avoid;
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 20px; background: #f8fafc; border-radius: 12px; margin-bottom: 16px;
   }
-  .filiere-icon { font-size: 26px; }
-  .filiere-header h2 { font-size: 16px; font-weight: 800; color: #0f172a; }
-  .filiere-count { font-size: 10px; color: #64748b; }
+  .filiere-icon { font-size: 32px; }
+  .filiere-header h2 { font-size: 20px; font-weight: 800; color: #0f172a; }
+  .filiere-count { font-size: 11px; color: #64748b; }
 
-  /* Formation cards - compact */
+  /* Formation cards */
   .formation-card {
-    border: 1px solid #e2e8f0; border-radius: 8px;
-    padding: 10px 14px; margin-bottom: 8px; background: white;
+    border: 1px solid #e2e8f0; border-radius: 10px;
+    padding: 12px 16px; margin-bottom: 10px; background: white;
     page-break-inside: avoid;
   }
-  .formation-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 4px; }
-  .formation-number { font-size: 9px; font-weight: 700; color: #94a3b8; background: #f1f5f9; border-radius: 5px; padding: 3px 6px; min-width: 32px; text-align: center; }
-  .formation-info h3 { font-size: 11px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
-  .formation-meta { display: flex; flex-wrap: wrap; gap: 4px; }
-  .badge { font-size: 8px; font-weight: 600; padding: 2px 6px; border-radius: 5px; display: inline-block; }
+  .formation-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 6px; }
+  .formation-number { font-size: 10px; font-weight: 700; color: #94a3b8; background: #f1f5f9; border-radius: 6px; padding: 4px 8px; min-width: 36px; text-align: center; }
+  .formation-info h3 { font-size: 12px; font-weight: 700; color: #0f172a; margin-bottom: 5px; }
+  .formation-meta { display: flex; flex-wrap: wrap; gap: 5px; }
+  .badge { font-size: 8.5px; font-weight: 600; padding: 3px 8px; border-radius: 6px; display: inline-block; }
   .badge.rncp { background: #dbeafe; color: #1e40af; }
   .badge.niveau { color: white; }
   .badge.duree { background: #fef3c7; color: #92400e; }
   .badge.domaine { background: #f0fdf4; color: #166534; }
-  .objectifs { font-size: 9px; color: #475569; line-height: 1.4; padding: 6px 10px; background: #fafbfc; border-radius: 5px; border-left: 3px solid #e2e8f0; margin-bottom: 4px; }
-  .programme { margin-top: 4px; }
-  .bloc { margin-bottom: 4px; }
-  .bloc-title { font-size: 9px; font-weight: 700; color: #334155; margin-bottom: 1px; }
-  .bloc ul { margin-left: 14px; font-size: 8.5px; color: #64748b; }
-  .bloc li { margin-bottom: 0; }
+  .objectifs { font-size: 9.5px; color: #475569; line-height: 1.5; padding: 8px 12px; background: #fafbfc; border-radius: 6px; border-left: 3px solid #e2e8f0; margin-bottom: 6px; }
+  .programme { margin-top: 5px; }
+  .bloc { margin-bottom: 5px; }
+  .bloc-title { font-size: 9.5px; font-weight: 700; color: #334155; margin-bottom: 2px; }
+  .bloc ul { margin-left: 16px; font-size: 9px; color: #64748b; }
+  .bloc li { margin-bottom: 1px; }
 
   @page { margin: 0; size: A4; }
 </style>

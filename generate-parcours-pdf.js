@@ -202,11 +202,10 @@ function generateHTML() {
   .parcours-content { padding: 14px 40px 8px; }
   .parcours-header {
     display: flex; align-items: center; gap: 14px;
-    margin-bottom: 12px;
+    margin-bottom: 0;
     padding: 10px 16px;
     background: white;
     border-left: 4px solid ${brandColor};
-    border-bottom: 1px solid #e5e7eb;
   }
   .parcours-num { font-size: 28px; font-weight: 800; color: ${brandColor}; }
   .parcours-header h2 { font-size: 20px; font-weight: 800; color: ${brandColor}; }
@@ -217,9 +216,8 @@ function generateHTML() {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 12px;
-    border-radius: 8px;
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   }
   .col-header {
     text-align: left;
@@ -289,8 +287,7 @@ function generateHTML() {
 <!-- TOC -->
 <div class="toc">
   <div class="page-bar">
-    <div class="logo"><span class="logo-box">M&amp;E</span><span class="logo-text">CONSULTING</span></div>
-    <div class="page-bar-right">Parcours de Formation</div>
+    <div class="page-bar-right" style="margin-left:auto">Parcours de Formation — Sommaire</div>
   </div>
   <div class="toc-content">
     <h1>Sommaire</h1>

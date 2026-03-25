@@ -838,7 +838,7 @@ const FILIERES = [
         "niveau": 4
       },
       {
-        "titre": "TP Responsable de petite et moyenne structure",
+        "titre": "TP Responsable de petite ou moyenne structure",
         "rncp": "RNCP38575",
         "niveau": 5
       },
@@ -4286,14 +4286,14 @@ const CATALOGUE = [
     ]
   },
   {
-    "titre": "TP Responsable de petite et moyenne structure",
+    "titre": "TP Responsable de petite ou moyenne structure",
     "rncp": "RNCP38575",
     "statut": "Actif",
     "niveau": 5,
     "duree": "441h",
     "domaine": "Gestion et management",
     "categorie": "Gestion - Administration - RH",
-    "objectifs": "Le responsable de petite et moyenne structure dirige et gère une entreprise, un établissement ou une association de moins de 50 salariés. Il traduit les orientations stratégiques en objectifs opérationnels, mobilise les moyens humains, matériels et financiers, anime son équipe et gère les aléas du quotidien.",
+    "objectifs": "Le responsable de petite ou moyenne structure dirige et gère une entreprise, un établissement ou une association de moins de 50 salariés. Il traduit les orientations stratégiques en objectifs opérationnels, mobilise les moyens humains, matériels et financiers, anime son équipe et gère les aléas du quotidien.",
     "programme": [
       {
         "bloc": "Animer une équipe",

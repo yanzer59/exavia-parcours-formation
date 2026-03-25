@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; color: #1e293b; font-size: 12px; line-height: 1.5; background: #eef2f7; }
+
+  /* Logo */
+  .logo { display: inline-flex; align-items: center; gap: 0; }
+  .logo-box { background: #0c1e3d; color: white; font-size: 18px; font-weight: 800; padding: 4px 8px; border-radius: 4px; letter-spacing: -0.5px; }
+  .logo-text { font-size: 12px; font-weight: 600; color: #0c1e3d; margin-left: 8px; letter-spacing: 1px; }
+
+  /* Page header bar */
+  .page-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 40px;
+    background: white;
+    border-bottom: 2px solid #0c1e3d;
+  }
+  .page-bar-right { font-size: 10px; color: #6b7280; }
+
+  /* Cover */
+  .cover {
+    width: 100%; height: 100vh;
+    background: #0c1e3d;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    color: white; text-align: center; position: relative;
+  }
+  .cover-logo { background: white; color: #0c1e3d; font-size: 48px; font-weight: 800; padding: 12px 24px; border-radius: 10px; letter-spacing: -1px; margin-bottom: 30px; }
+  .cover h1 { font-size: 42px; font-weight: 700; margin-bottom: 8px; }
+  .cover-line { width: 60px; height: 2px; background: rgba(255,255,255,0.3); margin: 14px auto; }
+  .cover-sub { font-size: 16px; color: rgba(255,255,255,0.6); font-weight: 300; }
+  .cover-stats { display: flex; gap: 60px; margin-top: 40px; }
+  .cover-stat { text-align: center; }
+  .cover-stat-val { font-size: 36px; font-weight: 700; }
+  .cover-stat-lbl { font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 2px; }
+  .cover-footer { position: absolute; bottom: 20px; font-size: 9px; color: rgba(255,255,255,0.25); }
+
+  /* TOC */
+  .toc { padding: 0; page-break-before: always; }
+  .toc-content { padding: 14px 50px; }
+  .toc h1 { font-size: 22px; font-weight: 700; color: #0c1e3d; margin-bottom: 2px; }
+  .toc-line { width: 40px; height: 2px; background: #0c1e3d; margin-bottom: 4px; }
+  .toc-sub { font-size: 11px; color: #6b7280; margin-bottom: 8px; }
+  .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px; }
+  .toc-row { display: flex; align-items: baseline; gap: 8px; padding: 4px 0; border-bottom: 1px solid #dde3ea; text-decoration: none; color: inherit; }
+  .toc-num { font-size: 12px; font-weight: 700; color: #0c1e3d; min-width: 22px; }
+  .toc-name { font-size: 12px; font-weight: 500; color: #1e293b; white-space: nowrap; }
+  .toc-dots { flex: 1; border-bottom: 1px dotted #94a3b8; min-width: 10px; margin: 0 4px; }
+  .toc-page { font-size: 11px; font-weight: 600; color: #6b7280; }
+
+  /* Parcours blocks */
+  .parcours-block {
+    page-break-inside: avoid;
+    margin-bottom: 8px;
+  }
+  .parcours-content { padding: 14px 40px 8px; }
+  .parcours-header {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 12px;
+    padding: 10px 16px;
+    background: white;
+    border-left: 4px solid #0c1e3d;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .parcours-num { font-size: 28px; font-weight: 800; color: #0c1e3d; }
+  .parcours-header h2 { font-size: 20px; font-weight: 800; color: #0c1e3d; }
+  .parcours-sub { font-size: 11px; color: #6b7280; margin-top: 2px; }
+
+  /* Table */
+  .parcours-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .col-header {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    padding: 7px 10px;
+    background: #0c1e3d;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    white-space: nowrap;
+  }
+  .col-header:last-child { border-right: none; }
+  .col-dot {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .arrow-hint {
+    color: rgba(255,255,255,0.4);
+    margin-left: 10px;
+    font-size: 14px;
+  }
+  .cell {
+    padding: 6px 12px;
+    border-bottom: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+    vertical-align: top;
+    background: white;
+  }
+  .cell:last-child { border-right: none; }
+  .cell.empty { background: #f3f6f9; }
+  .cell-title { font-size: 12px; font-weight: 600; color: #1e293b; line-height: 1.3; }
+  .cell-meta { font-size: 9px; color: #94a3b8; margin-top: 2px; }
+
+  /* Footer of each parcours */
+  .parcours-pfooter {
+    display: flex; gap: 24px;
+    padding: 7px 10px;
+    background: #f8fafc;
+    border-top: 1px solid #e5e7eb;
+  }
+  .footer-col { flex: 1; }
+  .footer-label { font-size: 11px; font-weight: 700; color: #0c1e3d; text-transform: uppercase; letter-spacing: 0.5px; }
+  .footer-list { font-size: 11px; color: #4b5563; }
+
+  @page { size: A4 landscape; margin: 0; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-logo">M&amp;E</div>
+  <h1>Parcours de Formation</h1>
+  <div class="cover-line"></div>
+  <div class="cover-sub">Debouches metiers et progression professionnelle</div>
+  <div class="cover-stats">
+    <div class="cover-stat"><div class="cover-stat-val">37</div><div class="cover-stat-lbl">Parcours</div></div>
+    <div class="cover-stat"><div class="cover-stat-val">231</div><div class="cover-stat-lbl">Formations</div></div>
+    <div class="cover-stat"><div class="cover-stat-val">4</div><div class="cover-stat-lbl">Niveaux</div></div>
+  </div>
+  <div class="cover-footer">M&amp;E Consulting — Edition Mars 2026</div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <div class="page-bar">
+    <div class="logo"><span class="logo-box">M&amp;E</span><span class="logo-text">CONSULTING</span></div>
+    <div class="page-bar-right">Parcours de Formation</div>
+  </div>
+  <div class="toc-content">
+    <h1>Sommaire</h1>
+    <div class="toc-line"></div>
+    <p class="toc-sub">37 parcours metiers — 231 formations — Du CAP au BAC+3</p>
+    <div class="toc-grid">
+      
+        <a href="#parcours-commerce-negociation" class="toc-row">
+          <span class="toc-num">01</span>
+          <span class="toc-name">Commerce & Négociation</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-commerce-negociation">p.3</span>
+        </a>
+      
+        <a href="#parcours-vente-magasin" class="toc-row">
+          <span class="toc-num">02</span>
+          <span class="toc-name">Vente en Magasin & Distribution</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-vente-magasin">p.3</span>
+        </a>
+      
+        <a href="#parcours-comptabilite-gestion" class="toc-row">
+          <span class="toc-num">03</span>
+          <span class="toc-name">Comptabilité & Gestion d'Entreprise</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-comptabilite-gestion">p.4</span>
+        </a>
+      
+        <a href="#parcours-secretariat-assistance" class="toc-row">
+          <span class="toc-num">04</span>
+          <span class="toc-name">Secrétariat & Assistance</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-secretariat-assistance">p.4</span>
+        </a>
+      
+        <a href="#parcours-gastronomie-arts-culinaires" class="toc-row">
+          <span class="toc-num">05</span>
+          <span class="toc-name">Gastronomie & Arts Culinaires</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-gastronomie-arts-culinaires">p.5</span>
+        </a>
+      
+        <a href="#parcours-restauration-collective" class="toc-row">
+          <span class="toc-num">06</span>
+          <span class="toc-name">Restauration Collective</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-restauration-collective">p.5</span>
+        </a>
+      
+        <a href="#parcours-restauration-rapide" class="toc-row">
+          <span class="toc-num">07</span>
+          <span class="toc-name">Restauration Rapide & Polyvalente</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-restauration-rapide">p.6</span>
+        </a>
+      
+        <a href="#parcours-maconnerie-gros-oeuvre" class="toc-row">
+          <span class="toc-num">08</span>
+          <span class="toc-name">Maçonnerie & Gros Œuvre</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-maconnerie-gros-oeuvre">p.6</span>
+        </a>
+      
+        <a href="#parcours-second-oeuvre-finitions" class="toc-row">
+          <span class="toc-num">09</span>
+          <span class="toc-name">Second Œuvre & Finitions</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-second-oeuvre-finitions">p.7</span>
+        </a>
+      
+        <a href="#parcours-charpente-menuiserie-metallerie" class="toc-row">
+          <span class="toc-num">10</span>
+          <span class="toc-name">Charpente, Menuiserie & Métallerie</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-charpente-menuiserie-metallerie">p.8</span>
+        </a>
+      
+        <a href="#parcours-travaux-publics-vrd" class="toc-row">
+          <span class="toc-num">11</span>
+          <span class="toc-name">Travaux Publics & VRD</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-travaux-publics-vrd">p.9</span>
+        </a>
+      
+        <a href="#parcours-etudes-conception-batiment" class="toc-row">
+          <span class="toc-num">12</span>
+          <span class="toc-name">Études, Conception & Topographie</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-etudes-conception-batiment">p.10</span>
+        </a>
+      
+        <a href="#parcours-electricite-batiment-connecte" class="toc-row">
+          <span class="toc-num">13</span>
+          <span class="toc-name">Électricité & Bâtiment Connecté</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-electricite-batiment-connecte">p.11</span>
+        </a>
+      
+        <a href="#parcours-genie-climatique-thermique" class="toc-row">
+          <span class="toc-num">14</span>
+          <span class="toc-name">Génie Climatique & Thermique</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-genie-climatique-thermique">p.12</span>
+        </a>
+      
+        <a href="#parcours-chaudronnerie-soudure" class="toc-row">
+          <span class="toc-num">15</span>
+          <span class="toc-name">Chaudronnerie, Soudure & Tuyauterie</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-chaudronnerie-soudure">p.13</span>
+        </a>
+      
+        <a href="#parcours-usinage-mecanique" class="toc-row">
+          <span class="toc-num">16</span>
+          <span class="toc-name">Usinage & Mécanique de Précision</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-usinage-mecanique">p.14</span>
+        </a>
+      
+        <a href="#parcours-production-industrielle" class="toc-row">
+          <span class="toc-num">17</span>
+          <span class="toc-name">Production & Pilotage Industriel</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-production-industrielle">p.15</span>
+        </a>
+      
+        <a href="#parcours-chimie-laboratoire" class="toc-row">
+          <span class="toc-num">18</span>
+          <span class="toc-name">Chimie & Laboratoire</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-chimie-laboratoire">p.15</span>
+        </a>
+      
+        <a href="#parcours-materiaux-composites" class="toc-row">
+          <span class="toc-num">19</span>
+          <span class="toc-name">Matériaux Composites</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-materiaux-composites">p.16</span>
+        </a>
+      
+        <a href="#parcours-controle-qualite" class="toc-row">
+          <span class="toc-num">20</span>
+          <span class="toc-name">Contrôle Qualité & Essais</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-controle-qualite">p.16</span>
+        </a>
+      
+        <a href="#parcours-maintenance-electronique" class="toc-row">
+          <span class="toc-num">21</span>
+          <span class="toc-name">Maintenance & Électronique Industrielle</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-maintenance-electronique">p.17</span>
+        </a>
+      
+        <a href="#parcours-mecanique-automobile" class="toc-row">
+          <span class="toc-num">22</span>
+          <span class="toc-name">Mécanique Automobile</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-mecanique-automobile">p.17</span>
+        </a>
+      
+        <a href="#parcours-vehicules-engins" class="toc-row">
+          <span class="toc-num">23</span>
+          <span class="toc-name">Véhicules Industriels & Engins</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-vehicules-engins">p.18</span>
+        </a>
+      
+        <a href="#parcours-hotellerie-hebergement" class="toc-row">
+          <span class="toc-num">24</span>
+          <span class="toc-name">Hôtellerie & Hébergement</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-hotellerie-hebergement">p.18</span>
+        </a>
+      
+        <a href="#parcours-tourisme-loisirs" class="toc-row">
+          <span class="toc-num">25</span>
+          <span class="toc-name">Tourisme & Loisirs</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-tourisme-loisirs">p.19</span>
+        </a>
+      
+        <a href="#parcours-developpement-web" class="toc-row">
+          <span class="toc-num">26</span>
+          <span class="toc-name">Développement Web & Logiciel</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-developpement-web">p.19</span>
+        </a>
+      
+        <a href="#parcours-systemes-reseaux-cyber" class="toc-row">
+          <span class="toc-num">27</span>
+          <span class="toc-name">Systèmes, Réseaux & Cybersécurité</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-systemes-reseaux-cyber">p.20</span>
+        </a>
+      
+        <a href="#parcours-design-creation-multimedia" class="toc-row">
+          <span class="toc-num">28</span>
+          <span class="toc-name">Design, Création & Multimédia</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-design-creation-multimedia">p.20</span>
+        </a>
+      
+        <a href="#parcours-telecom-fibre" class="toc-row">
+          <span class="toc-num">29</span>
+          <span class="toc-name">Télécommunications & Fibre Optique</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-telecom-fibre">p.21</span>
+        </a>
+      
+        <a href="#parcours-transport-conduite" class="toc-row">
+          <span class="toc-num">30</span>
+          <span class="toc-name">Transport & Conduite Routière</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-transport-conduite">p.21</span>
+        </a>
+      
+        <a href="#parcours-logistique-entreposage" class="toc-row">
+          <span class="toc-num">31</span>
+          <span class="toc-name">Logistique & Entreposage</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-logistique-entreposage">p.22</span>
+        </a>
+      
+        <a href="#parcours-sante-medico-social" class="toc-row">
+          <span class="toc-num">32</span>
+          <span class="toc-name">Santé & Médico-Social</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-sante-medico-social">p.22</span>
+        </a>
+      
+        <a href="#parcours-mediation-relation-client" class="toc-row">
+          <span class="toc-num">33</span>
+          <span class="toc-name">Médiation & Relation Client</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-mediation-relation-client">p.23</span>
+        </a>
+      
+        <a href="#parcours-formation-insertion" class="toc-row">
+          <span class="toc-num">34</span>
+          <span class="toc-name">Formation & Insertion Professionnelle</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-formation-insertion">p.23</span>
+        </a>
+      
+        <a href="#parcours-environnement-energie" class="toc-row">
+          <span class="toc-num">35</span>
+          <span class="toc-name">Environnement, Énergie & Dépollution</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-environnement-energie">p.24</span>
+        </a>
+      
+        <a href="#parcours-securite-surveillance" class="toc-row">
+          <span class="toc-num">36</span>
+          <span class="toc-name">Sécurité & Surveillance</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-securite-surveillance">p.25</span>
+        </a>
+      
+        <a href="#parcours-artisanat-mode-metiers-art" class="toc-row">
+          <span class="toc-num">37</span>
+          <span class="toc-name">Artisanat, Mode & Métiers d'Art</span>
+          <span class="toc-dots"></span>
+          <span class="toc-page" id="toc-page-artisanat-mode-metiers-art">p.26</span>
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+
+      <div class="parcours-block" id="parcours-commerce-negociation">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">01</div>
+            <div>
+              <h2>Parcours Commerce & Négociation</h2>
+              <p class="parcours-sub">3 formations — 2 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Conseiller commercial</div>
+            <div class="cell-meta">RNCP37717 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Négociateur technico-commercial</div>
+            <div class="cell-meta">RNCP39063 — 441h</div>
+          </td></tr><tr><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Assistant commercial</div>
+            <div class="cell-meta">RNCP41254 — 441h</div>
+          </td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Conseiller commercial — Commercial terrain — Negociateur technico-commercial — Assistant commercial</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">B2B — B2C — Industrie — Services</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-vente-magasin">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">02</div>
+            <div>
+              <h2>Parcours Vente en Magasin & Distribution</h2>
+              <p class="parcours-sub">5 formations — 3 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Employé commercial</div>
+            <div class="cell-meta">RNCP37099 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Conseiller de vente</div>
+            <div class="cell-meta">RNCP37098 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Manager d'unité marchande</div>
+            <div class="cell-meta">RNCP38676 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Employé technicien-vendeur en matériel de sport</div>
+            <div class="cell-meta">RNCP35992 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Manager d'unité marchande</div>
+            <div class="cell-meta">RNCP41853 — 441h</div>
+          </td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Employe commercial — Conseiller de vente — Manager de rayon — Responsable de magasin</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Grande distribution — Commerce specialise — Retail</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-comptabilite-gestion">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">03</div>
+            <div>
+              <h2>Parcours Comptabilité & Gestion d'Entreprise</h2>
+              <p class="parcours-sub">7 formations — 3 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#b45309"></span>Niveau 6 — BAC+3</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Comptable assistant</div>
+            <div class="cell-meta">RNCP37121 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Gestionnaire comptable et fiscal</div>
+            <div class="cell-meta">RNCP37949 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Responsable de petite ou moyenne structure</div>
+            <div class="cell-meta">RNCP38575 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Secrétaire comptable</div>
+            <div class="cell-meta">RNCP37123 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Gestionnaire de paie</div>
+            <div class="cell-meta">RNCP37948 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Assistant immobilier</div>
+            <div class="cell-meta">RNCP40989 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Assistant import-export</div>
+            <div class="cell-meta">RNCP36964 — 441h</div>
+          </td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Comptable assistant — Secretaire comptable — Gestionnaire comptable — Gestionnaire de paie — Assistant immobilier — Responsable de structure</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Cabinets comptables — PME/TPE — Immobilier</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-secretariat-assistance">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">04</div>
+            <div>
+              <h2>Parcours Secrétariat & Assistance</h2>
+              <p class="parcours-sub">3 formations — 2 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Secrétaire assistant</div>
+            <div class="cell-meta">RNCP36804 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Assistant de direction</div>
+            <div class="cell-meta">RNCP38667 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Secrétaire assistant médico-administratif</div>
+            <div class="cell-meta">RNCP40800 — 441h</div>
+          </td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Secretaire assistant(e) — Secretaire medical(e) — Assistant(e) de direction — Office manager</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Toute entreprise — Sante — Juridique</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-gastronomie-arts-culinaires">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">05</div>
+            <div>
+              <h2>Parcours Gastronomie & Arts Culinaires</h2>
+              <p class="parcours-sub">3 formations — 2 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Commis de cuisine</div>
+            <div class="cell-meta">RNCP38722 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Chef de partie arts culinaires et pâtisserie</div>
+            <div class="cell-meta">RNCP39515 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Cuisinier</div>
+            <div class="cell-meta">RNCP35316 — 441h</div>
+          </td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Commis de cuisine — Cuisinier — Chef de partie — Patissier — Chef de cuisine</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Restauration gastronomique — Hotels — Traiteurs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-restauration-collective">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">06</div>
+            <div>
+              <h2>Parcours Restauration Collective</h2>
+              <p class="parcours-sub">2 formations — 1 niveau de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Cuisinier en restauration collective</div>
+            <div class="cell-meta">RNCP38871 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Serveur en restauration</div>
+            <div class="cell-meta">RNCP39534 — 441h</div>
+          </td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Cuisinier collectivite — Serveur — Responsable de salle — Chef gerant</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Cantines — Hopitaux — EHPAD — Entreprises</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-restauration-rapide">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">07</div>
+            <div>
+              <h2>Parcours Restauration Rapide & Polyvalente</h2>
+              <p class="parcours-sub">1 formations — 1 niveau de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Employé polyvalent en restauration</div>
+            <div class="cell-meta">RNCP38663 — 441h</div>
+          </td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Employe polyvalent — Equipier — Responsable d'equipe</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Fast-food — Restauration rapide — Cafeterias</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-maconnerie-gros-oeuvre">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">08</div>
+            <div>
+              <h2>Parcours Maçonnerie & Gros Œuvre</h2>
+              <p class="parcours-sub">10 formations — 3 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Maçon</div>
+            <div class="cell-meta">RNCP35309 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Chef d'équipe gros œuvre</div>
+            <div class="cell-meta">RNCP38746 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Chef de chantier gros œuvre</div>
+            <div class="cell-meta">RNCP38721 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Maçon du bâti ancien</div>
+            <div class="cell-meta">RNCP39178 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Assistant chef de chantier gros œuvre</div>
+            <div class="cell-meta">RNCP38749 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Conducteur de travaux du bâtiment et du génie civil</div>
+            <div class="cell-meta">RNCP40217 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Coffreur bancheur</div>
+            <div class="cell-meta">RNCP35312 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Tailleur de pierre</div>
+            <div class="cell-meta">RNCP38550 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Couvreur-zingueur</div>
+            <div class="cell-meta">RNCP36101 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Etancheur toiture bâtiment</div>
+            <div class="cell-meta">RNCP37701 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Macon — Coffreur bancheur — Tailleur de pierre — Couvreur — Chef d'equipe gros oeuvre — Chef de chantier — Conducteur de travaux BTP</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">BTP — Genie civil — Renovation du patrimoine</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-second-oeuvre-finitions">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">09</div>
+            <div>
+              <h2>Parcours Second Œuvre & Finitions</h2>
+              <p class="parcours-sub">12 formations — 3 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Plaquiste</div>
+            <div class="cell-meta">RNCP37122 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Peintre décorateur</div>
+            <div class="cell-meta">RNCP40696 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Conducteur de travaux aménagement finitions</div>
+            <div class="cell-meta">RNCP38723 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Plâtrier traditionnel</div>
+            <div class="cell-meta">RNCP37874 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Peintre applicateur de revêtements techniques</div>
+            <div class="cell-meta">RNCP40697 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Peintre en bâtiment</div>
+            <div class="cell-meta">RNCP36257 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Plaquiste spécialisé</div>
+            <div class="cell-meta">RNCP40314 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Peintre façadier itéiste</div>
+            <div class="cell-meta">RNCP39891 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Chef d'équipe en aménagement finitions</div>
+            <div class="cell-meta">RNCP38751 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Carreleur-chapiste</div>
+            <div class="cell-meta">RNCP35509 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Chef de chantier aménagement finitions</div>
+            <div class="cell-meta">RNCP38747 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Solier moquettiste</div>
+            <div class="cell-meta">RNCP36259 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Plaquiste — Peintre en batiment — Carreleur — Solier moquettiste — Peintre decorateur — Chef d'equipe finitions — Conducteur de travaux</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Amenagement interieur — Renovation — Construction neuve</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-charpente-menuiserie-metallerie">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">10</div>
+            <div>
+              <h2>Parcours Charpente, Menuiserie & Métallerie</h2>
+              <p class="parcours-sub">8 formations — 2 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Charpentier bois</div>
+            <div class="cell-meta">RNCP35508 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Dessinateur projeteur d'ouvrages de métallerie</div>
+            <div class="cell-meta">RNCP37293 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Constructeur bois</div>
+            <div class="cell-meta">RNCP35507 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Menuisier agenceur</div>
+            <div class="cell-meta">RNCP36256 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Menuisier de fabrication bois et dérivés</div>
+            <div class="cell-meta">RNCP35823 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Menuisier aluminium</div>
+            <div class="cell-meta">RNCP37444 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Métallier</div>
+            <div class="cell-meta">RNCP38719 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Ferronnier</div>
+            <div class="cell-meta">RNCP38720 — 441h</div>
+          </td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Charpentier bois — Menuisier agenceur — Menuisier fabricant — Metallier — Ferronnier d'art — Dessinateur projeteur</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Construction bois — Menuiserie industrielle — Metallerie</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-travaux-publics-vrd">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">11</div>
+            <div>
+              <h2>Parcours Travaux Publics & VRD</h2>
+              <p class="parcours-sub">7 formations — 1 niveau de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Canalisateur</div>
+            <div class="cell-meta">RNCP38078 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Maçon en voirie et réseaux divers</div>
+            <div class="cell-meta">RNCP38080 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">conducteur d'engins de chantiers urbains</div>
+            <div class="cell-meta">RNCP35824 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Conducteur d'engins de grands terrassements</div>
+            <div class="cell-meta">RNCP35827 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Conducteur de grue à tour</div>
+            <div class="cell-meta">RNCP35826 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Ouvrier du génie écologique</div>
+            <div class="cell-meta">RNCP35934 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Scaphandrier travaux publics</div>
+            <div class="cell-meta">RNCP35232 — 441h</div>
+          </td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Canalisateur — Macon VRD — Conducteur d'engins — Grutier — Scaphandrier — Chef de chantier TP</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Travaux publics — Voirie — Reseaux — Genie civil</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-etudes-conception-batiment">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">12</div>
+            <div>
+              <h2>Parcours Études, Conception & Topographie</h2>
+              <p class="parcours-sub">15 formations — 4 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#b45309"></span>Niveau 6 — BAC+3</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Métreur assistant du bâtiment</div>
+            <div class="cell-meta">RNCP40137 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien d'études du bâtiment en dessin de projet</div>
+            <div class="cell-meta">RNCP39519 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">BIM modeleur du bâtiment</div>
+            <div class="cell-meta">RNCP39520 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Coordinateur BIM du bâtiment</div>
+            <div class="cell-meta">RNCP39408 — 441h</div>
+          </td></tr><tr><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Technicien métreur du bâtiment</div>
+            <div class="cell-meta">RNCP40138 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Dessinateur projeteur en béton armé</div>
+            <div class="cell-meta">RNCP40214 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Technicien de bureau d'études en électricité des bâtiments</div>
+            <div class="cell-meta">RNCP35530 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien supérieur du bâtiment, option économie de la construction</div>
+            <div class="cell-meta">RNCP40136 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Opérateur en détection de réseaux</div>
+            <div class="cell-meta">RNCP37101 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien supérieur du bâtiment, option étude de prix</div>
+            <div class="cell-meta">RNCP40135 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell empty"></td><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Chargé d'affaires du bâtiment</div>
+            <div class="cell-meta">RNCP35503 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell empty"></td><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Géomètre topographe d'entreprise du bâtiment et des travaux publics</div>
+            <div class="cell-meta">RNCP37100 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell empty"></td><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Technicien géomètre en cabinet</div>
+            <div class="cell-meta">RNCP37104 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell empty"></td><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Technicien en détection et géoréférencement de réseaux</div>
+            <div class="cell-meta">RNCP37102 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell empty"></td><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Technicien en géomatique</div>
+            <div class="cell-meta">RNCP37103 — 441h</div>
+          </td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Metreur — Technicien d'etudes — BIM modeleur — Dessinateur projeteur — Economiste de la construction — Geometre topographe — Charge d'affaires — Coordinateur BIM</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Bureaux d'etudes — Cabinets d'architecture — Maitrise d'oeuvre</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-electricite-batiment-connecte">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">13</div>
+            <div>
+              <h2>Parcours Électricité & Bâtiment Connecté</h2>
+              <p class="parcours-sub">7 formations — 2 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Electricien d'équipement du bâtiment</div>
+            <div class="cell-meta">RNCP37442 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien d'équipement et d'exploitation en électricité</div>
+            <div class="cell-meta">RNCP37446 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Electricien d'installation et de maintenance des systèmes automatisés</div>
+            <div class="cell-meta">RNCP38561 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Chargé de travaux en réseaux électriques aériens et souterrains</div>
+            <div class="cell-meta">RNCP35825 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Monteur de réseaux électriques aéro-souterrains</div>
+            <div class="cell-meta">RNCP35828 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien du bâtiment communicant et connecté</div>
+            <div class="cell-meta">RNCP35330 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Agent de maintenance des bâtiments</div>
+            <div class="cell-meta">RNCP35510 — 441h</div>
+          </td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Electricien d'equipement — Monteur reseaux electriques — Agent de maintenance — Technicien electricien — Domoticien</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Installation electrique — Domotique — Smart building</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-genie-climatique-thermique">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">14</div>
+            <div>
+              <h2>Parcours Génie Climatique & Thermique</h2>
+              <p class="parcours-sub">14 formations — 3 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Installateur thermique et sanitaire</div>
+            <div class="cell-meta">RNCP35189 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien d'intervention en froid commercial et climatisation</div>
+            <div class="cell-meta">RNCP39437 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien d'études en chauffage, ventilation et climatisation</div>
+            <div class="cell-meta">RNCP37292 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Monteur dépanneur frigoriste</div>
+            <div class="cell-meta">RNCP37876 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien d'intervention en froid industriel</div>
+            <div class="cell-meta">RNCP38869 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Monteur-dépanneur en climatisation</div>
+            <div class="cell-meta">RNCP37940 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien d'intervention en froid et équipements de cuisines professionnelles</div>
+            <div class="cell-meta">RNCP35525 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Agent de maintenance CVC</div>
+            <div class="cell-meta">RNCP38744 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien froid embarqué routier</div>
+            <div class="cell-meta">RNCP36242 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Agent de maintenance d'équipements de confort climatique</div>
+            <div class="cell-meta">RNCP38079 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien de maintenance CVC</div>
+            <div class="cell-meta">RNCP38748 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Technicien de maintenance d'équipements de confort climatique</div>
+            <div class="cell-meta">RNCP38081 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Technicien d'installation en équipements de confort climatique</div>
+            <div class="cell-meta">RNCP35231 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Technicien de maintenance en chauffage et énergies renouvelables</div>
+            <div class="cell-meta">RNCP35333 — 441h</div>
+          </td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Installateur thermique — Frigoriste — Climaticien — Technicien froid — Technicien chauffage/ENR — Charge d'etudes CVC</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Chauffage — Climatisation — Froid industriel — Energies renouvelables</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-chaudronnerie-soudure">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">15</div>
+            <div>
+              <h2>Parcours Chaudronnerie, Soudure & Tuyauterie</h2>
+              <p class="parcours-sub">10 formations — 3 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Agent de fabrication et montage en chaudronnerie</div>
+            <div class="cell-meta">RNCP35937 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien en chaudronnerie</div>
+            <div class="cell-meta">RNCP40801 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Dessinateur projeteur en tuyauterie et chaudronnerie industrielles</div>
+            <div class="cell-meta">RNCP39175 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Chaudronnier formeur aéronautique</div>
+            <div class="cell-meta">RNCP39182 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Soudeur programmeur de cellules robotisées</div>
+            <div class="cell-meta">RNCP36169 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Dessinateur projeteur en construction métallique</div>
+            <div class="cell-meta">RNCP37290 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Soudeur assembleur industriel</div>
+            <div class="cell-meta">RNCP40037 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Soudeur en tuyauterie industrielle</div>
+            <div class="cell-meta">RNCP40477 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Tuyauteur industriel</div>
+            <div class="cell-meta">RNCP40471 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Monteur en calorifuge industriel</div>
+            <div class="cell-meta">RNCP35723 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Chaudronnier — Soudeur industriel — Tuyauteur — Calorifugeur — Technicien chaudronnerie — Dessinateur projeteur tuyauterie</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Industrie petroliere — Nucleaire — Aeronautique — Navale</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-usinage-mecanique">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">16</div>
+            <div>
+              <h2>Parcours Usinage & Mécanique de Précision</h2>
+              <p class="parcours-sub">8 formations — 3 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Fraiseur en réalisation de pièces mécaniques</div>
+            <div class="cell-meta">RNCP36238 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Fraiseur d'outillages en usinage conventionnel et numérique</div>
+            <div class="cell-meta">RNCP38668 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien supérieur en conception industrielle de systèmes mécaniques</div>
+            <div class="cell-meta">RNCP37317 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Tourneur en réalisation de pièces mécaniques</div>
+            <div class="cell-meta">RNCP36236 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien d'études en mécanique</div>
+            <div class="cell-meta">RNCP40215 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Opérateur régleur en usinage assisté par ordinateur</div>
+            <div class="cell-meta">RNCP40699 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Régleur de machines-outils à commande numérique</div>
+            <div class="cell-meta">RNCP34738 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Ajusteur monteur aéronautique</div>
+            <div class="cell-meta">RNCP40088 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Fraiseur — Tourneur — Usineur CN — Ajusteur aeronautique — Regleur machines-outils — Concepteur industriel</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Aeronautique — Automobile — Mecanique de precision — Defense</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-production-industrielle">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">17</div>
+            <div>
+              <h2>Parcours Production & Pilotage Industriel</h2>
+              <p class="parcours-sub">8 formations — 3 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Agent de fabrication industrielle</div>
+            <div class="cell-meta">RNCP37397 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien de production industrielle</div>
+            <div class="cell-meta">RNCP39176 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien supérieur en production industrielle</div>
+            <div class="cell-meta">RNCP38661 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Conducteur d'installation et de machines automatisées</div>
+            <div class="cell-meta">RNCP37398 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Technicien supérieur des méthodes d'industrialisation</div>
+            <div class="cell-meta">RNCP39174 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Conducteur d'équipements agroalimentaires</div>
+            <div class="cell-meta">RNCP38374 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Monteur qualifié d'équipements industriels</div>
+            <div class="cell-meta">RNCP39083 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Conducteur de machines de plasturgie</div>
+            <div class="cell-meta">RNCP37877 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Agent de fabrication — Conducteur de ligne — Monteur industriel — Technicien de production — Responsable production</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Agroalimentaire — Plasturgie — Assemblage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-chimie-laboratoire">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">18</div>
+            <div>
+              <h2>Parcours Chimie & Laboratoire</h2>
+              <p class="parcours-sub">4 formations — 3 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Conducteur d'appareils de l'industrie de la chimie</div>
+            <div class="cell-meta">RNCP35314 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien de fabrication de l'industrie de la chimie</div>
+            <div class="cell-meta">RNCP35308 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien supérieur physicien chimiste</div>
+            <div class="cell-meta">RNCP39084 — 441h</div>
+          </td></tr><tr><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Technicien de laboratoire</div>
+            <div class="cell-meta">RNCP35310 — 441h</div>
+          </td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Conducteur d'appareils chimie — Technicien de fabrication — Technicien de laboratoire — Physicien chimiste</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Industrie chimique — Pharmaceutique — Cosmetique — R&D</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-materiaux-composites">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">19</div>
+            <div>
+              <h2>Parcours Matériaux Composites</h2>
+              <p class="parcours-sub">4 formations — 2 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Stratifieur multiprocédés en matériaux composites</div>
+            <div class="cell-meta">RNCP35229 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien des matériaux composites</div>
+            <div class="cell-meta">RNCP38669 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Opérateur composites hautes performances</div>
+            <div class="cell-meta">RNCP41064 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Constructeur aménageur nautique bois et composites</div>
+            <div class="cell-meta">RNCP39282 — 441h</div>
+          </td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Stratifieur composites — Operateur composites — Constructeur nautique — Technicien composites</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Aeronautique — Nautisme — Automobile — Energie eolienne</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-controle-qualite">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">20</div>
+            <div>
+              <h2>Parcours Contrôle Qualité & Essais</h2>
+              <p class="parcours-sub">4 formations — 2 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Technicien de contrôle et de métrologie industrielle</div>
+            <div class="cell-meta">RNCP37318 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien supérieur de contrôle non destructif</div>
+            <div class="cell-meta">RNCP36317 — 441h</div>
+          </td></tr><tr><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Inspecteur qualité aéronautique et spatiale</div>
+            <div class="cell-meta">RNCP37399 — 441h</div>
+          </td></tr><tr><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Technicien supérieur en fabrication additive</div>
+            <div class="cell-meta">RNCP36168 — 441h</div>
+          </td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Technicien controle — Inspecteur CND — Inspecteur qualite aero — Technicien fabrication additive</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Aeronautique/Spatial — Nucleaire — Automobile</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-maintenance-electronique">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">21</div>
+            <div>
+              <h2>Parcours Maintenance & Électronique Industrielle</h2>
+              <p class="parcours-sub">7 formations — 3 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Electromécanicien de maintenance industrielle</div>
+            <div class="cell-meta">RNCP37276 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien d'après-vente en électroménager et audiovisuel</div>
+            <div class="cell-meta">RNCP39177 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien supérieur de maintenance industrielle</div>
+            <div class="cell-meta">RNCP36247 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Agent de montage et de câblage en électronique</div>
+            <div class="cell-meta">RNCP38664 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Electronicien de tests et développement</div>
+            <div class="cell-meta">RNCP35307 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Monteur câbleur en aéronautique</div>
+            <div class="cell-meta">RNCP37400 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Technicien supérieur en automatique et informatique industrielle</div>
+            <div class="cell-meta">RNCP38713 — 441h</div>
+          </td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Electromecanicien — Cableur electronique — Monteur cableur aero — Technicien maintenance industrielle — Automaticien</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Maintenance industrielle — Electronique — Aeronautique</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-mecanique-automobile">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">22</div>
+            <div>
+              <h2>Parcours Mécanique Automobile</h2>
+              <p class="parcours-sub">5 formations — 2 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Mécanicien automobile</div>
+            <div class="cell-meta">RNCP38102 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien électromécanicien automobile</div>
+            <div class="cell-meta">RNCP38295 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Mécanicien de maintenance automobile</div>
+            <div class="cell-meta">RNCP38101 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Contrôleur technique automobile</div>
+            <div class="cell-meta">RNCP36371 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Mécanicien réparateur de motocycles</div>
+            <div class="cell-meta">RNCP39538 — 441h</div>
+          </td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Mecanicien automobile — Mecanicien moto — Technicien electromecanicien auto — Controleur technique</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Concessions — Garages — Centres auto</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-vehicules-engins">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">23</div>
+            <div>
+              <h2>Parcours Véhicules Industriels & Engins</h2>
+              <p class="parcours-sub">6 formations — 2 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Mécanicien réparateur de véhicules industriels</div>
+            <div class="cell-meta">RNCP35227 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien de maintenance d'engins et de matériels de chantier et de manutention</div>
+            <div class="cell-meta">RNCP39007 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Mécanicien réparateur des matériels agricoles</div>
+            <div class="cell-meta">RNCP38872 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien de maintenance d'engins et de matériels « machinisme agricole »</div>
+            <div class="cell-meta">RNCP39892 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Mécanicien réparateur des matériels d'espaces verts</div>
+            <div class="cell-meta">RNCP39008 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Mécanicien réparateur de matériels de chantier et de manutention</div>
+            <div class="cell-meta">RNCP39283 — 441h</div>
+          </td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Mecanicien VI — Mecanicien agricole — Mecanicien espaces verts — Mecanicien engins — Technicien maintenance engins</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">TP et chantier — Agriculture — Espaces verts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-hotellerie-hebergement">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">24</div>
+            <div>
+              <h2>Parcours Hôtellerie & Hébergement</h2>
+              <p class="parcours-sub">3 formations — 2 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Employé d'étage hôtellerie et hôtellerie de plein air</div>
+            <div class="cell-meta">RNCP38547 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Gouvernant en hôtellerie</div>
+            <div class="cell-meta">RNCP39533 — 441h</div>
+          </td></tr><tr><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Réceptionniste en hôtellerie</div>
+            <div class="cell-meta">RNCP34157 — 441h</div>
+          </td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Femme/Valet de chambre — Gouvernant(e) — Receptionniste — Chef de reception</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Hotels — Residences de tourisme — Campings</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-tourisme-loisirs">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">25</div>
+            <div>
+              <h2>Parcours Tourisme & Loisirs</h2>
+              <p class="parcours-sub">5 formations — 2 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Chargé d'accueil touristique et de loisirs</div>
+            <div class="cell-meta">RNCP37396 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Responsable de projets touristiques</div>
+            <div class="cell-meta">RNCP35527 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Guide accompagnateur touristique</div>
+            <div class="cell-meta">RNCP38548 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Animateur d'activités touristiques et de loisirs</div>
+            <div class="cell-meta">RNCP37387 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Conseiller vendeur en voyages</div>
+            <div class="cell-meta">RNCP37295 — 441h</div>
+          </td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Charge d'accueil touristique — Guide accompagnateur — Animateur de loisirs — Conseiller voyages — Responsable projets touristiques</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Offices de tourisme — Agences de voyage — Parcs de loisirs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-developpement-web">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">26</div>
+            <div>
+              <h2>Parcours Développement Web & Logiciel</h2>
+              <p class="parcours-sub">3 formations — 3 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#b45309"></span>Niveau 6 — BAC+3</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Agent de reconditionnement numérique</div>
+            <div class="cell-meta">RNCP38718 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Développeur web et web mobile</div>
+            <div class="cell-meta">RNCP37674 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Concepteur développeur d'applications</div>
+            <div class="cell-meta">RNCP37873 — 441h</div>
+          </td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Agent reconditionnement — Developpeur web — Developpeur fullstack — Concepteur d'applications — Lead developer</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">ESN — Start-ups — Agences web — Freelance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-systemes-reseaux-cyber">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">27</div>
+            <div>
+              <h2>Parcours Systèmes, Réseaux & Cybersécurité</h2>
+              <p class="parcours-sub">6 formations — 3 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#b45309"></span>Niveau 6 — BAC+3</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Technicien informatique de proximité</div>
+            <div class="cell-meta">RNCP40799 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien supérieur systèmes et réseaux</div>
+            <div class="cell-meta">RNCP37682 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Administrateur d'infrastructures sécurisées</div>
+            <div class="cell-meta">RNCP37680 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Technicien réseaux IP</div>
+            <div class="cell-meta">RNCP35295 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Administrateur système DevOps</div>
+            <div class="cell-meta">RNCP36061 — 441h</div>
+          </td></tr><tr><td class="cell empty"></td><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Administrateur réseau NetOps</div>
+            <div class="cell-meta">RNCP36163 — 441h</div>
+          </td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Technicien informatique — Technicien reseaux — Admin systemes et reseaux — Admin DevOps/NetOps — Ingenieur cybersecurite</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">ESN — DSI entreprises — Hebergeurs — Securite IT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-design-creation-multimedia">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">28</div>
+            <div>
+              <h2>Parcours Design, Création & Multimédia</h2>
+              <p class="parcours-sub">4 formations — 2 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#b45309"></span>Niveau 6 — BAC+3</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Graphiste</div>
+            <div class="cell-meta">RNCP39532 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Concepteur designer UI</div>
+            <div class="cell-meta">RNCP35634 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Monteur audiovisuel</div>
+            <div class="cell-meta">RNCP38752 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Médiateur numérique</div>
+            <div class="cell-meta">RNCP40695 — 441h</div>
+          </td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Graphiste — Monteur audiovisuel — Mediateur numerique — Designer UI/UX — Directeur artistique</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Agences de communication — Studios — Presse/Media</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-telecom-fibre">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">29</div>
+            <div>
+              <h2>Parcours Télécommunications & Fibre Optique</h2>
+              <p class="parcours-sub">3 formations — 3 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Installateur de réseaux de télécommunications en fibre optique</div>
+            <div class="cell-meta">RNCP37443 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien d'intervention de réseaux de télécommunications en fibre optique</div>
+            <div class="cell-meta">RNCP37445 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Chargé d'études de réseaux de télécommunications</div>
+            <div class="cell-meta">RNCP40698 — 441h</div>
+          </td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Installateur fibre optique — Technicien fibre FTTH — Charge d'etudes telecom — Chef d'equipe fibre</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Operateurs telecom — Sous-traitants fibre — Data centers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-transport-conduite">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">30</div>
+            <div>
+              <h2>Parcours Transport & Conduite Routière</h2>
+              <p class="parcours-sub">7 formations — 3 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Conducteur du transport routier de marchandises sur tous véhicules</div>
+            <div class="cell-meta">RNCP39795 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Exploitant en transport routier de marchandises</div>
+            <div class="cell-meta">RNCP40992 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Exploitant régulateur en transport routier de voyageurs</div>
+            <div class="cell-meta">RNCP39792 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Conducteur de transport en commun sur route</div>
+            <div class="cell-meta">RNCP37086 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Gestionnaire des opérations de transport routier de marchandises</div>
+            <div class="cell-meta">RNCP40990 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Conducteur du transport routier interurbain de voyageurs</div>
+            <div class="cell-meta">RNCP35222 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Organisateur de transports aériens ou maritimes de marchandises</div>
+            <div class="cell-meta">RNCP40991 — 441h</div>
+          </td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Conducteur PL/SPL — Conducteur de bus — Exploitant transport — Gestionnaire operations — Organisateur transport international</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Transport routier — Logistique — Transport voyageurs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-logistique-entreposage">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">31</div>
+            <div>
+              <h2>Parcours Logistique & Entreposage</h2>
+              <p class="parcours-sub">5 formations — 3 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Agent magasinier</div>
+            <div class="cell-meta">RNCP40216 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien en logistique d'entreposage</div>
+            <div class="cell-meta">RNCP36237 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien supérieur en méthodes et exploitation logistique</div>
+            <div class="cell-meta">RNCP37277 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Cariste d'entrepôt</div>
+            <div class="cell-meta">RNCP40499 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Préparateur de commandes en entrepôt</div>
+            <div class="cell-meta">RNCP40498 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Agent magasinier — Cariste — Preparateur de commandes — Technicien logistique — Responsable d'entrepot</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">E-commerce — Grande distribution — Industrie</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-sante-medico-social">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">32</div>
+            <div>
+              <h2>Parcours Santé & Médico-Social</h2>
+              <p class="parcours-sub">7 formations — 2 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Assistant de vie aux familles</div>
+            <div class="cell-meta">RNCP37715 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien en montage et vente d'optique-lunetterie</div>
+            <div class="cell-meta">RNCP39005 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Accompagnant éducatif et social</div>
+            <div class="cell-meta">RNCP36004 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien d'équipement d'aide à la personne</div>
+            <div class="cell-meta">RNCP38562 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Auxiliaire en prothèse dentaire</div>
+            <div class="cell-meta">RNCP35301 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Agent technique prothésiste orthésiste</div>
+            <div class="cell-meta">RNCP35303 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Agent de propreté et d'hygiène</div>
+            <div class="cell-meta">RNCP37872 — 441h</div>
+          </td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Aide a domicile — Accompagnant educatif et social — Auxiliaire prothese dentaire — Agent de proprete — Opticien vendeur</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">EHPAD — Domicile — Hopitaux — Laboratoires dentaires</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-mediation-relation-client">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">33</div>
+            <div>
+              <h2>Parcours Médiation & Relation Client</h2>
+              <p class="parcours-sub">4 formations — 3 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Agent de médiation, information, services</div>
+            <div class="cell-meta">RNCP37722 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Conseiller relation client à distance</div>
+            <div class="cell-meta">RNCP35304 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Manager d'équipe relation client à distance</div>
+            <div class="cell-meta">RNCP38665 — 441h</div>
+          </td></tr><tr><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Médiateur social accès aux droits et services</div>
+            <div class="cell-meta">RNCP36241 — 441h</div>
+          </td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Agent de mediation — Teleconseiller — Mediateur social — Manager relation client</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Services publics — Centres d'appels — Collectivites</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-formation-insertion">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">34</div>
+            <div>
+              <h2>Parcours Formation & Insertion Professionnelle</h2>
+              <p class="parcours-sub">3 formations — 2 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Encadrant technique d'insertion</div>
+            <div class="cell-meta">RNCP39794 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Formateur professionnel d'adultes</div>
+            <div class="cell-meta">RNCP37275 — 441h</div>
+          </td></tr><tr><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Conseiller en insertion professionnelle</div>
+            <div class="cell-meta">RNCP37274 — 441h</div>
+          </td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Encadrant technique — Formateur professionnel — Conseiller en insertion professionnelle</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Organismes de formation — Missions locales — Associations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-environnement-energie">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">35</div>
+            <div>
+              <h2>Parcours Environnement, Énergie & Dépollution</h2>
+              <p class="parcours-sub">14 formations — 3 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#be185d"></span>Niveau 5 — BAC+2</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Agent technique de réception et de valorisation de déchets</div>
+            <div class="cell-meta">RNCP35234 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Encadrant de chantier de traitement de l'amiante</div>
+            <div class="cell-meta">RNCP38100 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Encadrant technique d'une opération de traitement de l'amiante</div>
+            <div class="cell-meta">RNCP38098 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Opérateur de chantier de traitement de l'amiante</div>
+            <div class="cell-meta">RNCP38099 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Opérateur en dépollution pyrotechnique</div>
+            <div class="cell-meta">RNCP35297 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Chargé d'études thermiques, énergétiques et environnementales du bâtiment</div>
+            <div class="cell-meta">RNCP38546 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Aide opérateur en dépollution pyrotechnique</div>
+            <div class="cell-meta">RNCP40315 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien de traitement des eaux</div>
+            <div class="cell-meta">RNCP40313 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Chargé d'accompagnement à la rénovation énergétique du bâtiment</div>
+            <div class="cell-meta">RNCP39180 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Agent de refabrication et de recyclage de batteries</div>
+            <div class="cell-meta">RNCP36170 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Technicien en environnement et dépollution</div>
+            <div class="cell-meta">RNCP35197 — 441h</div>
+          </td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Agent d'assemblage et de maintenance de batteries</div>
+            <div class="cell-meta">RNCP36171 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Ouvrier de production horticole</div>
+            <div class="cell-meta">RNCP36954 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr><tr><td class="cell">
+            <div class="cell-title">Ouvrier paysagiste</div>
+            <div class="cell-meta">RNCP37875 — 441h</div>
+          </td><td class="cell empty"></td><td class="cell empty"></td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Agent valorisation dechets — Operateur amiante — Paysagiste — Horticulteur — Technicien traitement eaux — Charge d'etudes thermiques</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Environnement — Recyclage — Depollution — Energie renouvelable</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-securite-surveillance">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">36</div>
+            <div>
+              <h2>Parcours Sécurité & Surveillance</h2>
+              <p class="parcours-sub">4 formations — 1 niveau de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Agent de sûreté et de sécurité privée</div>
+            <div class="cell-meta">RNCP40298 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Opérateur en vidéoprotection et en télésurveillance</div>
+            <div class="cell-meta">RNCP37879 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Opérateur en télésurveillance et services associés</div>
+            <div class="cell-meta">RNCP38843 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Technicien de maintenance et de travaux en systèmes de sécurité incendie</div>
+            <div class="cell-meta">RNCP37294 — 441h</div>
+          </td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Agent de securite — Operateur videoprotection — Technicien securite incendie — Chef d'equipe securite</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Societes de securite — Grande distribution — Evenementiel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="parcours-block" id="parcours-artisanat-mode-metiers-art">
+        <div class="parcours-content">
+          <div class="parcours-header">
+            <div class="parcours-num">37</div>
+            <div>
+              <h2>Parcours Artisanat, Mode & Métiers d'Art</h2>
+              <p class="parcours-sub">9 formations — 2 niveaux de qualification</p>
+            </div>
+          </div>
+
+          <table class="parcours-table">
+            <thead><tr><th class="col-header"><span class="col-dot" style="background:#0d9488"></span>Niveau 3 — CAP / BEP<span class="arrow-hint">&#8594;</span></th><th class="col-header"><span class="col-dot" style="background:#4f46e5"></span>Niveau 4 — BAC</th></tr></thead>
+            <tbody><tr><td class="cell">
+            <div class="cell-title">Tapissier-couturier d'ameublement</div>
+            <div class="cell-meta">RNCP36245 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Sellier garnisseur véhicule de prestige et de collection</div>
+            <div class="cell-meta">RNCP40089 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Tapissier garnisseur</div>
+            <div class="cell-meta">RNCP36258 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Tapissier garnisseur</div>
+            <div class="cell-meta">RNCP37413 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Piqueur préparateur en maroquinerie</div>
+            <div class="cell-meta">RNCP37718 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Horloger</div>
+            <div class="cell-meta">RNCP39179 — 441h</div>
+          </td></tr><tr><td class="cell">
+            <div class="cell-title">Couturier en atelier mode et luxe</div>
+            <div class="cell-meta">RNCP39006 — 441h</div>
+          </td><td class="cell">
+            <div class="cell-title">Cordonnier multiservices</div>
+            <div class="cell-meta">RNCP38545 — 441h</div>
+          </td></tr><tr><td class="cell empty"></td><td class="cell">
+            <div class="cell-title">Couturier retoucheur</div>
+            <div class="cell-meta">RNCP35228 — 441h</div>
+          </td></tr></tbody>
+          </table>
+
+          <div class="parcours-pfooter">
+            <div class="footer-col">
+              <span class="footer-label">Debouches metiers :</span>
+              <span class="footer-list">Tapissier — Maroquinier — Couturier mode/luxe — Sellier — Horloger — Cordonnier</span>
+            </div>
+            <div class="footer-col">
+              <span class="footer-label">Secteurs :</span>
+              <span class="footer-list">Maisons de luxe — Ateliers artisanaux — Haute couture — Horlogerie</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</body></html>

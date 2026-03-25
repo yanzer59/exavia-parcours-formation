@@ -280,7 +280,7 @@ function generateHTML() {
   <div class="cover-sub">Debouches metiers et progression professionnelle</div>
   <div class="cover-stats">
     <div class="cover-stat"><div class="cover-stat-val">${FILIERES.length}</div><div class="cover-stat-lbl">Parcours</div></div>
-    <div class="cover-stat"><div class="cover-stat-val">231</div><div class="cover-stat-lbl">Formations</div></div>
+    <div class="cover-stat"><div class="cover-stat-val">235</div><div class="cover-stat-lbl">Formations</div></div>
     <div class="cover-stat"><div class="cover-stat-val">4</div><div class="cover-stat-lbl">Niveaux</div></div>
   </div>
   <div class="cover-footer">M&amp;E Consulting — Edition Mars 2026</div>
@@ -295,7 +295,7 @@ function generateHTML() {
   <div class="toc-content">
     <h1>Sommaire</h1>
     <div class="toc-line"></div>
-    <p class="toc-sub">37 parcours metiers — 231 formations — Du CAP au BAC+3</p>
+    <p class="toc-sub">37 parcours metiers — 235 formations — Du CAP au BAC+3</p>
     <div class="toc-grid">
       ${orderedFilieres.map((f, i) => `
         <a href="#parcours-${f.id}" class="toc-row">

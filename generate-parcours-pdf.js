@@ -30,7 +30,7 @@ const debouches = {
   "vehicules-engins": { metiers: ["Mecanicien VI", "Mecanicien agricole", "Mecanicien espaces verts", "Mecanicien engins", "Technicien maintenance engins"], secteurs: ["TP et chantier", "Agriculture", "Espaces verts"] },
   "gastronomie-arts-culinaires": { metiers: ["Commis de cuisine", "Cuisinier", "Chef de partie", "Patissier", "Chef de cuisine"], secteurs: ["Restauration gastronomique", "Hotels", "Traiteurs"] },
   "restauration-collective": { metiers: ["Cuisinier collectivite", "Serveur", "Responsable de salle", "Chef gerant"], secteurs: ["Cantines", "Hopitaux", "EHPAD", "Entreprises"] },
-  "restauration-rapide": { metiers: ["Employe polyvalent", "Equipier", "Responsable d'equipe"], secteurs: ["Fast-food", "Restauration rapide", "Cafeterias"] },
+  "restauration-rapide": { metiers: ["Employe polyvalent", "Equipier", "Responsable de point de restauration", "Manager de restauration rapide", "Directeur d'etablissement", "Responsable de structure"], secteurs: ["Fast-food", "Restauration rapide", "Restauration collective", "Cafeterias", "Grande distribution"] },
   "hotellerie-hebergement": { metiers: ["Femme/Valet de chambre", "Gouvernant(e)", "Receptionniste", "Chef de reception"], secteurs: ["Hotels", "Residences de tourisme", "Campings"] },
   "tourisme-loisirs": { metiers: ["Charge d'accueil touristique", "Guide accompagnateur", "Animateur de loisirs", "Conseiller voyages", "Responsable projets touristiques"], secteurs: ["Offices de tourisme", "Agences de voyage", "Parcs de loisirs"] },
   "vente-magasin": { metiers: ["Employe commercial", "Conseiller de vente", "Manager de rayon", "Responsable de magasin"], secteurs: ["Grande distribution", "Commerce specialise", "Retail"] },

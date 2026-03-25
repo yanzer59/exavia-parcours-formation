@@ -826,6 +826,26 @@ const FILIERES = [
         "titre": "TP Employé polyvalent en restauration",
         "rncp": "RNCP38663",
         "niveau": 3
+      },
+      {
+        "titre": "TFP Employé de service et de production en restauration",
+        "rncp": "RNCP40407",
+        "niveau": 3
+      },
+      {
+        "titre": "TFP Responsable opérationnel de point de restauration",
+        "rncp": "RNCP40896",
+        "niveau": 4
+      },
+      {
+        "titre": "TP Responsable de petite et moyenne structure",
+        "rncp": "RNCP38575",
+        "niveau": 5
+      },
+      {
+        "titre": "TP Responsable d'établissement marchand",
+        "rncp": "RNCP38666",
+        "niveau": 6
       }
     ]
   },
@@ -4226,6 +4246,90 @@ const CATALOGUE = [
       {
         "bloc": "Employé polyvalent en restauration",
         "competences": []
+      }
+    ]
+  },
+  {
+    "titre": "TFP Employé de service et de production en restauration",
+    "rncp": "RNCP40407",
+    "statut": "Actif",
+    "niveau": 3,
+    "duree": "441h",
+    "domaine": "Restauration",
+    "categorie": "Hôtellerie - Restauration - Tourisme",
+    "objectifs": "L'employé de service et de production en restauration exerce dans des entreprises de restauration rapide, de collectivité ou des chaînes de cafétérias. Il prépare des plats, prend les commandes, assure le service, l'encaissement, la mise en place de la salle et la gestion des stocks, en garantissant la satisfaction du client dans le respect des réglementations d'hygiène et de sécurité alimentaire.",
+    "programme": [
+      {
+        "bloc": "Service en restauration",
+        "competences": ["Réaliser l'entretien de la salle", "Mettre en place l'espace de restauration", "Accueillir les clients/convives", "Prendre la commande", "Réaliser le service", "Effectuer les opérations d'encaissement"]
+      },
+      {
+        "bloc": "Préparer et assembler la prestation culinaire",
+        "competences": ["Réceptionner les marchandises", "Préparer et assembler des plats simples", "Contrôler la qualité des produits"]
+      }
+    ]
+  },
+  {
+    "titre": "TFP Responsable opérationnel de point de restauration",
+    "rncp": "RNCP40896",
+    "statut": "Actif",
+    "niveau": 4,
+    "duree": "441h",
+    "domaine": "Restauration",
+    "categorie": "Hôtellerie - Restauration - Tourisme",
+    "objectifs": "Le responsable opérationnel de point de restauration gère au quotidien un point de restauration collective, rapide ou commerciale en libre-service. Il anime les équipes, supervise la production culinaire, veille à la qualité du service, gère les stocks et suit les performances économiques dans le respect des réglementations d'hygiène et de sécurité alimentaire.",
+    "programme": [
+      {
+        "bloc": "Responsable opérationnel de point de restauration",
+        "competences": ["Mettre en place et vérifier la conformité opérationnelle", "Gérer la relation commerciale clients/convives", "Superviser la production culinaire", "Suivre les flux financiers et l'activité", "Animer l'équipe du point de restauration"]
+      }
+    ]
+  },
+  {
+    "titre": "TP Responsable de petite et moyenne structure",
+    "rncp": "RNCP38575",
+    "statut": "Actif",
+    "niveau": 5,
+    "duree": "441h",
+    "domaine": "Gestion et management",
+    "categorie": "Gestion - Administration - RH",
+    "objectifs": "Le responsable de petite et moyenne structure dirige et gère une entreprise, un établissement ou une association de moins de 50 salariés. Il traduit les orientations stratégiques en objectifs opérationnels, mobilise les moyens humains, matériels et financiers, anime son équipe et gère les aléas du quotidien.",
+    "programme": [
+      {
+        "bloc": "Animer une équipe",
+        "competences": ["Encadrer et animer l'équipe", "Organiser et assurer le fonctionnement d'une unité", "Organiser et assurer la gestion opérationnelle des ressources humaines"]
+      },
+      {
+        "bloc": "Piloter les opérations commerciales et la production",
+        "competences": ["Mettre en œuvre le plan marketing", "Mettre en œuvre l'action commerciale", "Assurer la gestion de la production"]
+      },
+      {
+        "bloc": "Gérer les ressources financières",
+        "competences": ["Contrôler l'activité comptable", "Analyser les indicateurs de gestion", "Monter des dossiers de financement"]
+      }
+    ]
+  },
+  {
+    "titre": "TP Responsable d'établissement marchand",
+    "rncp": "RNCP38666",
+    "statut": "Actif",
+    "niveau": 6,
+    "duree": "441h",
+    "domaine": "Commerce et distribution",
+    "categorie": "Commerce et Vente",
+    "objectifs": "Le responsable d'établissement marchand pilote l'activité d'un établissement marchand afin de contribuer à la satisfaction et la fidélisation du client et d'optimiser la rentabilité. Il gère les équipes, les stocks, le marketing, les ventes et le service client en utilisant les technologies adaptées pour anticiper les besoins des clients.",
+    "programme": [
+      {
+        "bloc": "Coordonner et améliorer l'activité commerciale",
+        "competences": ["Organiser l'approvisionnement", "Piloter l'offre produits", "Réaliser le marchandisage", "Développer les ventes"]
+      },
+      {
+        "bloc": "Optimiser la performance économique",
+        "competences": ["Établir les prévisions économiques", "Analyser les résultats et bâtir les plans d'action"]
+      },
+      {
+        "bloc": "Manager les salariés",
+        "competences": ["Recruter et intégrer", "Planifier et coordonner l'activité", "Accompagner la performance"]
       }
     ]
   },

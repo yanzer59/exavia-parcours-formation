@@ -48,23 +48,48 @@ const debouches = {
   "formation-insertion": { metiers: ["Encadrant technique", "Formateur professionnel", "Conseiller en insertion professionnelle"], secteurs: ["Organismes de formation", "Missions locales", "Associations"] },
   "environnement-energie": { metiers: ["Agent valorisation déchets", "Opérateur amiante", "Paysagiste", "Horticulteur", "Technicien traitement eaux", "Chargé d'études thermiques"], secteurs: ["Environnement", "Recyclage", "Dépollution", "Énergie renouvelable"] },
   "securite-surveillance": { metiers: ["Agent de sécurité", "Opérateur vidéoprotection", "Technicien sécurité incendie", "Chef d'équipe sécurité"], secteurs: ["Sociétés de sécurité", "Grande distribution", "Événementiel"] },
+  "securite-mediation": { metiers: ["Agent de sécurité", "Opérateur vidéoprotection", "Technicien sécurité incendie", "Agent de médiation", "Téléconseiller", "Médiateur social", "Manager relation client"], secteurs: ["Sociétés de sécurité", "Grande distribution", "Événementiel", "Services publics", "Centres d'appels", "Collectivités"] },
   "artisanat-mode-metiers-art": { metiers: ["Tapissier", "Maroquinier", "Couturier mode/luxe", "Sellier", "Horloger", "Cordonnier"], secteurs: ["Maisons de luxe", "Ateliers artisanaux", "Haute couture", "Horlogerie"] }
 };
 
 function generateHTML() {
-  // Reorder: Commerce, Vente/Distribution, Admin/RH, Restauration first
-  const priorityIds = [
+  // Merge Sécurité + Médiation into one filière
+  const securite = FILIERES.find(f => f.id === 'securite-surveillance');
+  const mediation = FILIERES.find(f => f.id === 'mediation-relation-client');
+  const mergedSecurite = {
+    id: 'securite-mediation',
+    nom: 'Sécurité, Médiation & Relation Client',
+    icon: '🛡️',
+    color: '#374151',
+    formations: [...(securite ? securite.formations : []), ...(mediation ? mediation.formations : [])]
+  };
+
+  // Custom order
+  const orderedIds = [
     'commerce-negociation',
     'vente-magasin',
-    'comptabilite-gestion',
+    'restauration-rapide',
     'secretariat-assistance',
+    'comptabilite-gestion',
     'gastronomie-arts-culinaires',
     'restauration-collective',
-    'restauration-rapide',
+    'securite-mediation', // merged
+    'transport-conduite',
+    'logistique-entreposage',
+    'hotellerie-hebergement',
+    'tourisme-loisirs',
+    'developpement-web',
+    'systemes-reseaux-cyber',
+    'design-creation-multimedia',
+    'telecom-fibre',
   ];
-  const priorityFilieres = priorityIds.map(id => FILIERES.find(f => f.id === id)).filter(Boolean);
-  const restFilieres = FILIERES.filter(f => !priorityIds.includes(f.id));
-  const orderedFilieres = [...priorityFilieres, ...restFilieres];
+  const excludeIds = ['securite-surveillance', 'mediation-relation-client', ...orderedIds];
+  const restFilieres = FILIERES.filter(f => !excludeIds.includes(f.id));
+  const allFilieres = orderedIds.map(id => {
+    if (id === 'securite-mediation') return mergedSecurite;
+    return FILIERES.find(f => f.id === id);
+  }).filter(Boolean);
+  const orderedFilieres = [...allFilieres, ...restFilieres];
 
   const parcoursSections = orderedFilieres.map((filiere, fi) => {
     const d = debouches[filiere.id] || { metiers: [], secteurs: [] };
@@ -278,7 +303,7 @@ function generateHTML() {
   <div class="cover-sub">Debouches metiers et progression professionnelle</div>
   <div class="cover-stats">
     <div class="cover-stat"><div class="cover-stat-val">${FILIERES.length}</div><div class="cover-stat-lbl">Parcours</div></div>
-    <div class="cover-stat"><div class="cover-stat-val">235</div><div class="cover-stat-lbl">Formations</div></div>
+    <div class="cover-stat"><div class="cover-stat-val">236</div><div class="cover-stat-lbl">Formations</div></div>
     <div class="cover-stat"><div class="cover-stat-val">4</div><div class="cover-stat-lbl">Niveaux</div></div>
   </div>
   <div class="cover-footer">M&amp;E Consulting — Edition Mars 2026</div>
@@ -292,7 +317,7 @@ function generateHTML() {
   <div class="toc-content">
     <h1>Sommaire</h1>
     <div class="toc-line"></div>
-    <p class="toc-sub">37 parcours metiers — 235 formations — Du CAP au BAC+3</p>
+    <p class="toc-sub">36 parcours metiers — 236 formations — Du CAP au BAC+3</p>
     <div class="toc-grid">
       ${orderedFilieres.map((f, i) => `
         <a href="#parcours-${f.id}" class="toc-row">

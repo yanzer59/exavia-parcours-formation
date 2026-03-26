@@ -922,17 +922,17 @@ const FILIERES = [
         "niveau": 3
       },
       {
+        "titre": "TP Assistant manager d'unité marchande",
+        "rncp": "RNCP38675",
+        "niveau": 4
+      },
+      {
         "titre": "TP Conseiller de vente",
         "rncp": "RNCP37098",
         "niveau": 4
       },
       {
-        "titre": "TP Manager d'unité marchande",
-        "rncp": "RNCP41853",
-        "niveau": 5
-      },
-      {
-        "titre": "TP Manager d'unité marchande",
+        "titre": "TP Manager d'établissement marchand",
         "rncp": "RNCP41853",
         "niveau": 5
       }
@@ -1155,6 +1155,11 @@ const FILIERES = [
     "icon": "📊",
     "color": "#4338ca",
     "formations": [
+      {
+        "titre": "TP Chargé d'accueil et de gestion administrative",
+        "rncp": "RNCP41239",
+        "niveau": 4
+      },
       {
         "titre": "TP Comptable assistant",
         "rncp": "RNCP37121",
@@ -4106,7 +4111,7 @@ const CATALOGUE = [
     ]
   },
   {
-    "titre": "TP Manager d'unité marchande",
+    "titre": "TP Manager d'établissement marchand",
     "rncp": "RNCP41853",
     "statut": "Actif",
     "niveau": 5,
@@ -5129,7 +5134,23 @@ const CATALOGUE = [
     ]
   },
   {
-    "titre": "TP Manager d'unité marchande",
+    "titre": "TP Assistant manager d'unité marchande",
+    "rncp": "RNCP38675",
+    "statut": "Actif",
+    "niveau": 4,
+    "duree": "441h",
+    "domaine": "Management commercial",
+    "categorie": "Commerce et Vente",
+    "objectifs": "L'assistant manager d'unité marchande seconde le manager dans la gestion quotidienne du point de vente. Il contribue au développement de la dynamique commerciale, participe à la gestion des stocks et à l'animation de l'équipe.",
+    "programme": [
+      {
+        "bloc": "Assister le manager d'unité marchande",
+        "competences": ["Contribuer à l'organisation du fonctionnement de l'unité marchande", "Contribuer à l'animation de l'équipe", "Participer à la gestion de l'approvisionnement"]
+      }
+    ]
+  },
+  {
+    "titre": "TP Manager d'établissement marchand",
     "rncp": "RNCP41853",
     "statut": "Actif",
     "niveau": 5,

@@ -409,9 +409,10 @@ ${parcoursSections}
     // Check each filiere - normalize spaces and accents for comparison
     const norm = s => s.replace(/\s+/g, ' ').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
     const normText = norm(text);
-    for (const filiere of FILIERES) {
+    // Search all filieres including merged ones
+    const allToSearch = [...FILIERES, { id: 'securite-mediation', nom: 'Sécurité, Médiation & Relation Client' }];
+    for (const filiere of allToSearch) {
       if (parcourPages[filiere.id]) continue;
-      // Use just the first word of the filiere name after "Parcours"
       const firstWord = filiere.nom.split(/[,&]/)[0].trim();
       const search = norm('Parcours ' + firstWord);
       if (normText.includes(search)) {
@@ -425,7 +426,8 @@ ${parcoursSections}
   // PASS 2: Regenerate with correct page numbers
   console.log('Pass 2: Regenerating with correct pages...');
   let html2 = generateHTML();
-  for (const filiere of FILIERES) {
+  const allFils = [...FILIERES, { id: 'securite-mediation', nom: 'Sécurité, Médiation & Relation Client' }];
+  for (const filiere of allFils) {
     const pageNum = parcourPages[filiere.id] || '?';
     html2 = html2.replace(`id="toc-page-${filiere.id}">p.—`, `id="toc-page-${filiere.id}">p.${pageNum}`);
   }
